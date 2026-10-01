@@ -1,0 +1,32 @@
+# Large or copyrighted material
+lectures/videos/
+*.mp4
+*.m4v
+liou_introAtomoRad/
+ulaby2014/
+Microwave Radar*.pdf
+Synthetic Aperture Radar Polarimetry*.pdf
+letters4visitors/
+project/
+psets/
+
+# Files over GitHub's 100 MB limit (~870 MB each)
+lectures/princRS_lecture00b.key
+lectures/princRS_lecture00b.pptx
+
+# LaTeX build files
+*.aux
+*.log
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.out
+*.key
+*.pptx
+
+# Markdown (audit reports, handoff notes)
+*.md
+*.claude/
+
+# Mac
+.DS_Store

@@ -1,0 +1,575 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=0.8in,letterpaper]{geometry}
+\usepackage{times}
+\usepackage{amssymb,amsmath}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{12}\selectfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MASTER VARIABLES TABLE
+% Single source of truth for symbols used across all lecture notes (latex_notes/lecture*/).
+% Workflow:
+%   - Before adding a symbol to any lecture, check it here. Reuse the listed symbol for the same quantity.
+%   - A symbol that already means something else here is a DUAL USAGE: add it to Section 2 with
+%     status PENDING. Only the instructor approves dual usages (status -> APPROVED, with date).
+%   - Add new symbols to Section 1 with the lecture(s) where they appear.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\pending}{\textbf{PENDING}}
+\newcommand{\approved}{\textbf{APPROVED}}
+\newcommand{\resolved}{\textbf{RESOLVED}}
+
+\title{Physical Principles of Remote Sensing:\\Master Variables Table}
+\author{Brent Minchew}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Conventions.}
+\begin{itemize}
+	\item Units are SI. Unit symbols are upright roman (C, S, F, V, A, H, K); variables are italic.
+	\item Time-harmonic fields use $e^{j\omega t}$ with $j^2=-1$, so complex quantities are written $\varepsilon = \varepsilon' - j\varepsilon''$ with $\varepsilon'' \ge 0$ for lossy media.
+	\item $\varepsilon$ (no subscript) is the \emph{relative} complex dielectric constant (dimensionless); absolute permittivity is $\varepsilon'\varepsilon_0$.
+	\item Subscripts $w$ and $i$ denote liquid water and ice.
+	\item A tilde marks the complex-valued counterpart of a real quantity. Phasors (complex amplitudes of time-harmonic quantities) carry a tilde: $\mathbf{E}(x,y,z,t) = \mathrm{Re}[\tilde{\mathbf{E}}(x,y,z)\,e^{j\omega t}]$, $\xi(t) = \tilde{\xi}e^{j\omega t}$. Time-domain quantities have no tilde. The complex angle of refraction in lossy media is $\tilde{\theta}_t$ (L5).
+	\item $\rho$ (and, from Lecture 5, $\rho_h$, $\rho_v$) is the Fresnel reflection coefficient, as in Ulaby \& Long. Volume charge density is written $q_v$ (instructor decision, 2026-09-29; F7).
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Symbols}
+
+{\small
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{>{$}l<{$} >{\raggedright\arraybackslash}p{0.24\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.105\textwidth} l}
+\hline
+\textrm{Symbol} & Description & Units & Value & Lec. & Dual use \\
+\hline
+\endfirsthead
+\hline
+\textrm{Symbol} & Description & Units & Value & Lec. & Dual use \\
+\hline
+\endhead
+\hline
+\endfoot
+\multicolumn{6}{l}{\emph{Universal constants}} \\
+\varepsilon_0 & permittivity of free space & F/m & $8.854\times10^{-12}$ & 1, 2, 4, 5, 11, 12 & D1, D8, D88 \\
+\mu_0 & permeability of free space & H/m & $4\pi\times10^{-7}$ & 1, 2, 4, 5 & D1 \\
+c & speed of light in a vacuum & m/s & $2.998\times10^{8}$ & 1--2, 4--5, 10--14 & D79, D89, D135 \\
+e & elementary charge & C & $1.602\times10^{-19}$ & 1, 11 & D4, D95, D145 \\
+k_B & Boltzmann constant & J/K & $1.381\times10^{-23}$ & 1, 11--14 & D14, D146 \\
+h & Planck constant & J\,s & $6.626\times10^{-34}$ & 10--13 & D97 \\
+\hbar & reduced Planck constant, $h/2\pi$ & J\,s & $1.055\times10^{-34}$ & 10--12 & D97 \\
+\sigma_\mathrm{SB} & Stefan--Boltzmann constant (L12; handwritten $\sigma$) & W\,m$^{-2}$K$^{-4}$ & $5.67\times10^{-8}$ & 12, 13 & D117 \\
+b_W & Wien's displacement constant, $\lambda_\mathrm{max}T$ & m\,K & $2.898\times10^{-3}$ & 12 & D130 \\
+R_\mathrm{gas} & universal gas constant & J\,mol$^{-1}$K$^{-1}$ & $8.314$ & 10 & D93 \\
+j & imaginary unit & -- & $\sqrt{-1}$ & 1, 2, 4--7, 14 & \\
+\eta_0 & intrinsic impedance of free space, $\sqrt{\mu_0/\varepsilon_0}$ & $\Omega$ & $\approx 376.7$ ($\approx120\pi$) & 2, 4, 5 & \\
+\multicolumn{6}{l}{\emph{Constitutive parameters and dielectric properties}} \\
+\varepsilon & complex dielectric constant (relative), $\varepsilon'-j\varepsilon''$ & dimensionless & -- & 1, 2, 4--6, 9, 11--13 & D8 \\
+\varepsilon' & relative permittivity & dimensionless & $\ge 1$ (almost always) & 1, 2, 4, 5, 6 & \\
+\varepsilon'' & dielectric loss factor & dimensionless & -- & 1, 2, 5 & \\
+\varepsilon_\mathrm{material} & absolute permittivity of a material & F/m & -- & 1 & D8 \\
+\mu & magnetic permeability & H/m & $\approx\mu_0$ & 1, 2, 4, 5, 6 & F6 \\
+q_v & volume charge density & C/m$^3$ & 0 in RS & 1, 2 & D31 \\
+\sigma & electrical conductivity & S/m & seawater $\approx 4.8$ & 1, 2, 4, 5 & D45, D117 \\
+\omega & angular frequency (L8: also of ocean-surface waves) & rad/s & -- & 1--2, 4--5, 8, 10--13 & D65, D96 \\
+f & frequency, $\omega/2\pi$ (L14: instantaneous frequency $f(t)$ of a chirp, $f(s)$ of the Doppler history) & Hz & -- & 1, 12--14 & D58, D92 \\
+\multicolumn{6}{l}{\emph{Electrostatics (parallel-plate capacitor)}} \\
+A & plate area (L1); area illuminated by a beam on an interface (L5); nominal area of illumination in $\sigma^0$ (L7) (L9: horizontal area illuminated at depth $z$ in a canopy) & m$^2$ & -- & 1, 5, 7, 9 & D5, D34, D70 \\
+h & plate separation & m & -- & 1 & D97, D31 \\
+Q & plate charge & C & -- & 1 & \\
+E & electric field magnitude & V/m & -- & 1 & D2, D100 \\
+\tilde{E} & phasor (complex amplitude) of $E$ & V/m & -- & 1 & D2 \\
+V & electric potential difference & V & -- & 1 & D5 \\
+C & capacitance & F & -- & 1 & D5 \\
+\multicolumn{6}{l}{\emph{Damped harmonic oscillator}} \\
+\xi & displacement (oscillator model, L1; string, L4) & m & -- & 1, 4 & D13, D21, D72 \\
+\tilde{\xi} & complex amplitude of $\xi$ & m & -- & 1 & \\
+m & particle mass & kg & -- & 1 & \\
+q & particle charge & C & -- & 1 & D51 \\
+K_\mathrm{spring} & bond spring constant & N/m & $m\omega_0^2$ & 1 & D3 \\
+\omega_0 & natural (resonant) angular frequency (L11: line center) (L14: carrier of a chirp, $2\pi f_0$) & rad/s & -- & 1, 11, 14 & D1, D88, D152 \\
+\nu & damping coefficient (L11: of a pressure-broadened line, handwritten $\gamma$; half-width at half-maximum $\nu/2$ in $\omega$) & s$^{-1}$ & -- & 1, 11 & D9, D107 \\
+F_\mathrm{bond} & restoring (bond) force & N & -- & 1 & D5, D143 \\
+F_\mathrm{damping} & damping force & N & -- & 1 & D5, D143 \\
+F_\mathrm{driving} & driving force & N & -- & 1 & D5, D143 \\
+p & dipole moment (L12: vector $\mathbf{p}$ of a scattering particle, amplitude $\mathbf{p}_0$) & C$\cdot$m & -- & 1, 12 & D122 \\
+\tilde{p} & phasor of $p$ & C$\cdot$m & -- & 1 & \\
+P & polarization (dipole moment per volume) & C/m$^2$ & -- & 1 & D30, D87 \\
+\tilde{P} & phasor of $P$ & C/m$^2$ & -- & 1 & \\
+N & number density of dipoles & m$^{-3}$ & -- & 1, 11 & D43, D77, D125 \\
+\omega_p & plasma frequency & rad/s & -- & 1, 11 & D15 \\
+\tau_\mathrm{rel} & characteristic relaxation time of a polarization mechanism (specific ones subscripted: $\tau_w$, $\tau_i$) & s & -- & 1 & D18, D137 \\
+\multicolumn{6}{l}{\emph{Thermal}} \\
+T & temperature (L14: total equivalent noise temperature of a receiver) & K (\textdegree C in empirical fits) & -- & 1, 10--14 & D6, D105 \\
+K & thermal conductivity & W\,m$^{-1}$K$^{-1}$ & -- & 1 & D3, D5, D64 \\
+L & Lorenz number & W\,$\Omega$\,K$^{-2}$ & $1.11\times10^{-8}$ (Drude), $2.44\times10^{-8}$ (Sommerfeld) & 1 & D131 \\
+\multicolumn{6}{l}{\emph{Water and ice}} \\
+\varepsilon_{w0} & static dielectric constant of water & dimensionless & 88.0 (0\textdegree C), 80.1 (20\textdegree C) & 1 & D1 \\
+\varepsilon_{w\infty} & high-frequency dielectric constant of water & dimensionless & 4.9 (single-Debye); 2.8--4.0 (double-Debye) & 1 & D7 \\
+\varepsilon_{w1} & intermediate dielectric constant (double-Debye) & dimensionless & -- & 1 & D28 \\
+\tau_w & relaxation time of water & s & 18 ps (0\textdegree C), 9.3 ps (20\textdegree C) & 1 & D91, D137 \\
+\tau_{w1}, \tau_{w2} & double-Debye relaxation times & s & -- & 1 & D28, D137 \\
+S & salinity & psu & seawater $\approx 35$ & 1 & D5, D10 \\
+\varepsilon_{i0}, \varepsilon_{i\infty} & static and high-frequency dielectric constants of ice & dimensionless & $\varepsilon_i' \approx 3.2$ & 1 & D1, D23 \\
+\tau_i & relaxation time of ice & s & relaxation in kHz range & 1 & D23, D137 \\
+\multicolumn{6}{l}{\emph{Maxwell's equations and plane waves}} \\
+\mathbf{E} & electric field intensity vector (instantaneous) (L12: total field, $\mathbf{E}^i$ plus the dipole's field) & V/m & -- & 2, 4, 5, 12 & D12, D136 \\
+\tilde{\mathbf{E}} & phasor of $\mathbf{E}$ & V/m & -- & 2, 5 & D12 \\
+E_x, E_y, E_z & Cartesian components of $\mathbf{E}$ & V/m & -- & 2 & \\
+\tilde{E}_x, \tilde{E}_y, \tilde{E}_z & Cartesian components of $\tilde{\mathbf{E}}$ & V/m & -- & 2, 5 & \\
+E_x^+ & complex amplitude of the $+z$-propagating $\tilde{E}_x$ at $z=0$ & V/m & -- & 2 & D16 \\
+\mathbf{H} & magnetic field intensity vector (instantaneous) & A/m & -- & 2, 4, 5, 12 & D11, D12, D94 \\
+\tilde{\mathbf{H}} & phasor of $\mathbf{H}$ & A/m & -- & 2, 5 & D12 \\
+x, y, z & Cartesian coordinates (L7: also $x'$, $y'$ for a second point) (L10: $z$ is altitude above sea level) & m & -- & 2, 4--5, 7, 9--11, 13 & D13, D57, D139 \\
+\hat{\mathbf{x}}, \hat{\mathbf{y}}, \hat{\mathbf{z}} & Cartesian unit vectors & dimensionless & -- & 2, 4, 5 & \\
+t & time & s & -- & 2, 4, 5, 12, 14 & \\
+\nabla, \nabla^2 & del operator; Laplacian $\nabla\cdot\nabla$ & m$^{-1}$; m$^{-2}$ & -- & 2 & \\
+k_0 & free-space angular wavenumber, $\omega/c = 2\pi/\lambda_0$ & rad/m & -- & 2, 6, 9, 11, 13 & D14, D113 \\
+k & angular wavenumber in a medium, $\omega/u_p = k_0n'$ ($\approx k_0\sqrt{\varepsilon'}$ for low loss); a subscript may indicate the medium (L4: $k_1$, $k_2$ in strings/media 1, 2) (L12: in the surrounding air, $\approx k_0$) (D163) (L14: $2\pi/\lambda$, handwritten $K$) & rad/m & -- & 2, 4, 5, 7, 8, 11, 12, 14 & D14, D28, D64 \\
+\hat{\mathbf{k}} & propagation unit vector & dimensionless & -- & 2, 4--8, 12 & D14, D23, D147 \\
+\lambda_0 & free-space wavelength & m & -- & 2 & \\
+\lambda & wavelength in a medium (L6: $\lambda_2$ in medium 2; L7, L8, L14: radar wavelength) & m & -- & 2, 6--10, 12--14 & D61 \\
+\eta & intrinsic impedance of a medium, $\eta_0/\sqrt{\varepsilon}$ (Ulaby \& Long: $\eta_c$ when lossy) & $\Omega$ & -- & 2, 4, 5, 6 & D28 \\
+\phi_\eta & phase angle of $\eta$, $\eta = |\eta|e^{j\phi_\eta}$ & rad & -- & 2, 4, 5 & D29 \\
+u_p & phase velocity, $\omega/k$ (string: $\sqrt{T/m}$; L8 ocean waves: $\omega/K$; L14: speed of a radar pulse, handwritten $V_p$) & m/s & $c/\sqrt{\varepsilon'}$ (low-loss) & 2, 4, 5, 8, 11, 14 & D15, D68 \\
+\gamma & propagation constant, $\alpha + j\beta$ ($=jk_0\sqrt{\varepsilon}$) & m$^{-1}$ & -- & 2, 4, 5, 6 & D9, D66 \\
+\alpha & attenuation constant & Np/m & -- & 2, 4, 5, 9 & D69, D71, D118 \\
+\beta & phase constant & rad/m & -- & 2, 4, 5 & \\
+\delta_s & skin depth, $1/\alpha$ & m & -- & 2, 6 & D24 \\
+\delta_p & penetration depth, $1/(2\alpha)$ (L9: $1/\kappa_\mathrm{e}$, including scattering losses; $=1/(2\alpha)$ if scatter-free) & m & $\delta_s/2$ & 2, 6, 9 & D15, D24, D84 \\
+n & complex index of refraction, $n'-jn'' = \sqrt{\varepsilon}$ (L12: real, $n^2 = \varepsilon$) & dimensionless & -- & 2, 4--6, 11, 12 & D70, D99 \\
+n', n'' & real part and negative imaginary part of $n$ (L4: $n'$ only) & dimensionless & -- & 2, 4, 5, 11 & \\
+\boldsymbol{\mathcal{S}} & Poynting vector, $\mathbf{E}(t)\times\mathbf{H}(t)$ & W/m$^2$ & -- & 2 & D10 \\
+\boldsymbol{\mathcal{S}}_\mathrm{av} & time-averaged power density, $\tfrac12\mathrm{Re}[\tilde{\mathbf{E}}\times\tilde{\mathbf{H}}^*]$ & W/m$^2$ & -- & 2, 4, 5 & D10 \\
+\multicolumn{6}{l}{\emph{Transverse waves on strings (analogy)}} \\
+\xi(z,t) & transverse displacement of a string (see $\xi$ above) & m & -- & 4 & D21 \\
+\xi^i, \xi^r, \xi^t & incident, reflected, transmitted string waves & m & -- & 4 & D23 \\
+\xi_0^i, \xi_0^r, \xi_0^t & complex amplitudes of $\xi^i$, $\xi^r$, $\xi^t$ & m & -- & 4 & D22, D27 \\
+\phi^i, \phi^r, \phi^t & phases of $\xi_0^i$, $\xi_0^r$, $\xi_0^t$ & rad & $\phi^t=\phi^i$ & 4 & D24 \\
+F_\mathrm{tension} & string tension ($F_{\mathrm{tension},1}$, $F_{\mathrm{tension},2}$ for strings 1, 2) & N & -- & 4 & D19, D143 \\
+m_\ell & mass per unit length of a string ($m_{\ell 1}$, $m_{\ell 2}$) & kg/m & -- & 4 & D20, D98 \\
+X_1, X_2, X_3 & subscripts 1, 2 (L6: also 3): string or medium 1 ($z<0$ or upper) and 2 (L6: media 1, 2, 3 from top to bottom) (e.g., $F_{\mathrm{tension},1}$, $m_{\ell 1}$, $u_{p1}$, $k_1$, $\varepsilon_1$, $\eta_1$, $\gamma_1$, $\alpha_1$, $\beta_1$, $\phi_{\eta_1}$, $\sigma_1$, $\mu_1$) & -- & -- & 4, 5, 6, 8 & D28 \\
+\multicolumn{6}{l}{\emph{EM boundary conditions}} \\
+E^\perp, H^\perp & field components normal to an interface & V/m; A/m & -- & 4, 5, 6 & \\
+E^\parallel, H^\parallel & field components tangential to an interface & V/m; A/m & -- & 4, 5, 6 & \\
+\mathcal{V}, \partial\mathcal{V} & volume and its closed bounding surface (Gauss's laws) & m$^3$; m$^2$ & -- & 4 & D25 \\
+\mathcal{A}, \partial\mathcal{A} & open surface of integration and its bounding closed loop (Faraday, Amp\`ere) & m$^2$; -- & -- & 4 & D25, D26 \\
+d\mathbf{a}, \hat{\mathbf{a}} & vector area element; unit normal to the interface (medium 2 $\to$ 1) (L7: local normal to an undulating surface) (L14: handwritten $\hat{n}$) & m$^2$; -- & -- & 4, 5, 6, 7, 14 & \\
+d\boldsymbol{\ell}, \ell & vector line element along $\partial\mathcal{A}$; length of the loop's long side & m & -- & 4 & D48 \\
+I_f & free current through the loop & A & 0 (assumed) & 4 & D123, D138 \\
+\multicolumn{6}{l}{\emph{Reflection and transmission at a planar interface}} \\
+\tilde{\mathbf{E}}^i, \tilde{\mathbf{E}}^r, \tilde{\mathbf{E}}^t & phasors of incident, reflected, transmitted $\mathbf{E}$ & V/m & -- & 4, 5 & D23 \\
+\tilde{\mathbf{H}}^i, \tilde{\mathbf{H}}^r, \tilde{\mathbf{H}}^t & phasors of incident, reflected, transmitted $\mathbf{H}$ & A/m & -- & 4, 5 & D23 \\
+\tilde{\mathbf{E}}_1, \tilde{\mathbf{H}}_1, \tilde{\mathbf{E}}_2, \tilde{\mathbf{H}}_2 & total field phasors in media 1 and 2 (L6: also $\tilde{\mathbf{E}}_3$, $\tilde{\mathbf{H}}_3$) (no tilde: instantaneous) & V/m; A/m & -- & 4, 6 & D28 \\
+E^i, E^r, E^t & complex amplitudes of incident, reflected, transmitted $\mathbf{E}$ at the interface ($z=0$) (Ulaby \& Long p.~52, Eqs.~2.87--2.88) (L12: $\mathbf{E}^i$, incident field on a scattering particle, handwritten $\mathbf{E}_0$) & V/m & $E^i$ known & 4, 12 & D23, D27 \\
+\hat{\mathbf{k}}_i, \hat{\mathbf{k}}_r, \hat{\mathbf{k}}_t & propagation unit vectors of incident, reflected, transmitted waves & dimensionless & -- & 4, 5, 7, 8 & D23, D147 \\
+\rho & Fresnel reflection coefficient, $E^r/E^i$ (normal incidence) & dimensionless & $|\rho|\le1$ for a propagating wave incident from a lossless medium & 4, 5, 7 & D46, D75, D86 \\
+\rho_\mathrm{eff} & effective reflection coefficient $B_1/A_1$ of a layered composite & dimensionless & $\rho_{12}$ if $d\gg\delta_s$ & 6 & D40 \\
+\tau & Fresnel transmission coefficient, $E^t/E^i$ (normal incidence) & dimensionless & $1+\rho$ & 4, 5 & D18, D137 \\
+\boldsymbol{\mathcal{S}}_{\mathrm{av}1}, \boldsymbol{\mathcal{S}}_{\mathrm{av}2} & time-averaged power density in media 1 and 2 & W/m$^2$ & equal at $z=0$ & 4 & D28 \\
+\boldsymbol{\mathcal{S}}^i_\mathrm{av}, \boldsymbol{\mathcal{S}}^r_\mathrm{av}, \boldsymbol{\mathcal{S}}^t_\mathrm{av} & time-averaged power densities of incident, reflected, transmitted waves & W/m$^2$ & -- & 4 & D23 \\
+\Gamma & reflectivity, $|\rho|^2$ (as in Ulaby \& Long) & dimensionless & $0$--$1$ & 4, 5, 6, 7 & D19, D73 \\
+\mathbb{T} & transmissivity, $1-\Gamma$ for lossless medium 1 (as in Ulaby \& Long) & dimensionless & $0$--$1$ & 4, 5 & D19 \\
+\multicolumn{6}{l}{\emph{Oblique incidence (Lecture 5)}} \\
+\mathbf{r} & position vector (L13: of a radiative-transfer volume element, handwritten underlined $r$) & m & -- & 5, 13 & D33, D53 \\
+\mathbf{k}_i, \mathbf{k}_r, \mathbf{k}_t & wavenumber vectors of incident, reflected, transmitted waves & rad/m & -- & 5 & D23 \\
+k_i, k_r, k_t & magnitudes of $\mathbf{k}_i$, $\mathbf{k}_r$, $\mathbf{k}_t$ & rad/m & $k_i=k_r=k_1$ & 5 & D23 \\
+k_{ix}, k_{iy}, \ldots & Cartesian components of $\mathbf{k}_i$ (likewise $\mathbf{k}_r$, $\mathbf{k}_t$) & rad/m & -- & 5 & \\
+\tilde{\mathbf{E}}^i(\mathbf{0}) & phasor at the origin (vector amplitude) & V/m & -- & 5 & \\
+\tilde{E}^i_x, \tilde{E}^i_z, \tilde{H}^i_z, \ldots & Cartesian components of $\tilde{\mathbf{E}}^i(\mathbf{0})$, etc. & V/m; A/m & -- & 5 & \\
+B^i, B^r, B^t & generic coefficients in the BCs (handwritten $B_i^i$, \ldots) & varies & -- & 5 & D129 \\
+\theta_i, \theta_r, \theta_t & angles of incidence, reflection, refraction (from the normal) & rad & $\theta_r=\theta_i$ & 5, 6, 7, 8, 9, 14 & \begin{tabular}[t]{@{}l@{}}D29, D156,\\ D160\end{tabular} \\
+\theta_1 & common angle $\theta_i=\theta_r$ in medium 1 & rad & -- & 5, 6 & D29, D120 \\
+\theta_c & critical angle (as in Ulaby \& Long) & rad & $\sin^{-1}(n_2'/n_1')$ & 5 & D35 \\
+\theta_B & Brewster angle & rad & $\tan^{-1}\sqrt{\varepsilon_2'/\varepsilon_1'}$ & 5 & D36, D146 \\
+\tilde{\theta}_t & complex-valued angle of refraction (lossy media, or beyond the critical angle) & rad & real if $\varepsilon_2/\varepsilon_1$ is real and $\theta_i \le \theta_c$ & 5 & D32 \\
+\tilde{\mathbf{E}}_h^i, \tilde{\mathbf{H}}_h^i, \ldots & field phasors for H (subscript $h$) and V ($v$) polarization (L7 figure: $\mathbf{E}_h^i$, $\mathbf{H}_h^i$, \ldots) & V/m; A/m & -- & 5, 7 & D31, D85 \\
+E_h^i, E_h^r, E_h^t & complex amplitudes of H-polarized $\mathbf{E}$ at the origin (likewise $E_v$) (L12: incident $h$- and $v$-polarized fields $E_h^i$, $E_v^i$, $E_p^i$ on a scattering particle, handwritten $E_{0h}$, $E_{0v}$, $E_{0p}$) & V/m & -- & 5, 6, 12 & D27, D31, D133 \\
+\rho_h, \rho_v & Fresnel reflection coefficients, H and V polarization & dimensionless & $\rho$ at $\theta_i=0$ & 5, 8, 9 & D31, D85 \\
+\tau_h, \tau_v & Fresnel transmission coefficients, H and V polarization & dimensionless & $\tau$ at $\theta_i=0$ & 5, 8 & D31, D137 \\
+\mathcal{S}_h^i, \mathcal{S}_h^r, \mathcal{S}_h^t & magnitudes of time-averaged power densities (H pol.) & W/m$^2$ & -- & 5 & \\
+A_i, A_r, A_t & cross-sectional areas of incident, reflected, transmitted beams (L5; in L7 the scatterer areas are $A_{(n)}$, D59) & m$^2$ & -- & 5 & D34 \\
+P_h^i, P_h^r, P_h^t & average powers of incident, reflected, transmitted beams & W & -- & 5 & D30, D52 \\
+\Gamma_h, \Gamma_v & reflectivities, H and V polarization (U\&L: $\Gamma^h$, $\Gamma^v$) (L9: $\Gamma_p$ for polarization $p$, handwritten $\Gamma^p$) & dimensionless & $|\rho_{h,v}|^2$ & 5, 9 & D31, D83 \\
+\mathbb{T}_h, \mathbb{T}_v & transmissivities, H and V polarization (L9: $\mathbb{T}_p$, $\mathbb{T}_q$ of the air--snow interface, handwritten $T_p$, $T_q$) & dimensionless & $|\tau_{h,v}|^2\Phi$ & 5, 9 & D31, D80 \\
+\Phi & factor relating $\mathbb{T}$ to $|\tau|^2$ & dimensionless & -- & 5 & D38 \\
+\mathcal{L} & propagation factor across a layer, $e^{-\gamma_2 d\cos\tilde{\theta}_2}$ (as in Ulaby \& Long) & dimensionless & $|\mathcal{L}|\le1$ & 6 & D38 \\
+\multicolumn{6}{l}{\emph{Layered media (Lecture 6)}} \\
+d & thickness of the layer (medium 2) (L9: canopy or snow-layer thickness) & m & -- & 6, 9 & D37, D90 \\
+N & number of layers in a composite & dimensionless & -- & 6 & D43 \\
+\tilde{\theta}_2, \tilde{\theta}_3 & angles of propagation in media 2 and 3 (complex in lossy media, real if lossless) & rad & -- & 6 & D41 \\
+\tilde{\mathbf{E}}_1^-, \tilde{\mathbf{E}}_1^+ & downward- and upward-propagating $\mathbf{E}$ phasors in medium 1 (likewise medium 2) & V/m & -- & 6 & \\
+\tilde{H}_{1x}, \tilde{H}_{1z}, \ldots & Cartesian components of $\tilde{\mathbf{H}}_1$ (likewise media 2, 3) & A/m & -- & 6 & \\
+A_1, A_2, A_3 & amplitudes of downward-propagating $\mathbf{E}$ in media 1, 2, 3 (as in Ulaby \& Long) & V/m & $A_1$ known & 6 & D39 \\
+B_1, B_2 & amplitudes of upward-propagating $\mathbf{E}$ in media 1, 2 (as in Ulaby \& Long) & V/m & -- & 6 & D39, D129 \\
+\rho_{12}, \rho_{21}, \rho_{23} & Fresnel reflection coefficients at the interfaces ($\rho_{12}$: incidence from medium 1 on medium 2; similarly $\rho_{21}$, $\rho_{23}$) (H or V pol.) & dimensionless & $\rho_{21}=-\rho_{12}$ & 6 & D42 \\
+\tau_{12}, \tau_{21} & Fresnel transmission coefficients between media 1 and 2 & dimensionless & H pol.: $1\pm\rho_{12}$ & 6 & D42, D137 \\
+\chi & ratio of successive multiple-reflection terms, $\rho_{21}\rho_{23}\mathcal{L}^2$ (Ulaby \& Long: $x$; renamed per D13) & dimensionless & $|\chi|<1$ (medium 1 air, $\varepsilon'\ge1$, $\theta_1<90^\circ$) & 6 & \\
+p & summation index (L6) & dimensionless & $0,1,2,\ldots$ & 6 & D44, D51 \\
+\multicolumn{6}{l}{\emph{Radar equation (Lecture 7)}} \\
+R & distance (range) from antenna or scatterer (L12: from a scattering dipole) (L14: slant range; $R(s)$ as a function of slow time) & m & far field: $R\gg\lambda$ & 7, 9, 12--14 & \begin{tabular}[t]{@{}l@{}}D53, D93,\\ D121, D147\end{tabular} \\
+R_t, R_r & distances antenna $\to$ scatterer and scatterer $\to$ receiver & m & $R_t=R_r=R$ (monostatic) & 7 & D52, D53 \\
+P_t & transmit power & W & -- & 7 & D30, D52 \\
+G_t, G_r, G & gains of the transmit and receive antennas; common gain & dimensionless & $G_t=G_r=G$ (monostatic) & 7 & D52 \\
+\mathcal{S}_s, \mathcal{S}_r & power densities (magnitude of the Poynting vector) at the scatterer and at the receiver & W/m$^2$ & $\mathcal{S}_s=P_tG_t/(4\pi R_t^2)$ & 7 & D10, D56 \\
+A_{\mathrm{eff},s} & effective receiving area of the scatterer & m$^2$ & -- & 7 & D52 \\
+P_{rs}, P_{ts} & power received and power radiated by the scatterer & W & $P_{ts}=P_{rs}(1-f_a)$ & 7 & D30 \\
+f_a & fraction of power absorbed by the scatterer & dimensionless & $0$--$1$ & 7 & D58 \\
+G_{ts} & gain of the scatterer in the direction of the receiver & dimensionless & -- & 7 & \\
+A_\mathrm{eff} & effective area of the receiving aperture (L13: of a radiometer antenna, handwritten $A_r$; $\Omega_\mathrm{p} = \lambda^2/A_\mathrm{eff}$) & m$^2$ & $\lambda^2G_r/4\pi$ (lossless antenna) & 7, 13 & D52, D141 \\
+P_r & power entering the receiver & W & -- & 7, 14 & D30, D52 \\
+\sigma & radar (scattering) cross section, $A_{\mathrm{eff},s}(1-f_a)G_{ts}$ & m$^2$ & -- & 7 & D45, D117 \\
+\sigma_{(n)}, A_{(n)} & radar cross section and area of individual scatterer $n$ & m$^2$ & -- & 7 & D45, D59 \\
+\sigma^0, \sigma^0_{pq} & normalized radar cross section (backscattering coefficient), $\langle\sigma_{(n)}/A_{(n)}\rangle_n$; for receive/transmit polarizations $p$, $q$ & dimensionless & -- & 7, 8, 9 & D45 \\
+p, q & receive and transmit polarizations ($h$ or $v$) (L12: $p$ only) & -- & -- & 7, 8, 9, 12 & D51 \\
+P_p^r, P_q^t & $p$-polarized received power; $q$-polarized transmit power (as in Ulaby \& Long) & W & -- & 7 & D30, D52 \\
+E_p^s, E_q^i & scattered ($p$-pol.) and incident ($q$-pol.) electric fields & V/m & -- & 7 & D56 \\
+\Gamma_{pq} & reflectance, $|E_p^s|^2/|E_q^i|^2$ (generalization of $\Gamma$) & dimensionless & -- & 7 & D63, D73 \\
+\multicolumn{6}{l}{\emph{Rough surfaces (Lecture 7)}} \\
+\xi(x,y) & local surface height & m & zero mean & 7 & D50, D72 \\
+h & rms surface height, $\langle\xi^2\rangle^{1/2}$ (Ulaby \& Long: $s$) & m & -- & 7, 8, 9 & D47, D97 \\
+\mathcal{C}(r) & surface-height auto-correlation function (Ulaby \& Long and van Zyl write $\rho(r)$) & dimensionless & $\mathcal{C}(0)=1$, $\mathcal{C}(\ell)=e^{-1}$ & 7 & D46, D124 \\
+r & horizontal separation (lag) between two surface points, $\sqrt{(x-x')^2+(y-y')^2}$ & m & -- & 7 & D53 \\
+\ell & correlation length (Ulaby \& Long: $l$) & m & -- & 7, 8 & D48, D98 \\
+W & roughness spectrum, $\frac{1}{2\pi}\iint\mathcal{C}\,e^{-j(k_xu+k_yv)}du\,dv$ & m$^2$ & -- & 7, 8 & \\
+k_x, k_y & spectral wavenumbers of the roughness & rad/m & backscatter: $(-2k\sin\theta_i,0)$ & 7, 8 & D54 \\
+u, v & lags (separations) in $x$ and $y$ & m & -- & 7 & D55, D68, D127 \\
+\theta_s, \phi_s & scattering angle and scattering azimuth & rad & backscatter: $\theta_i$, $\pi$ & 7 & D56, D60, D78 \\
+\Lambda & wavelength of surface undulations (L8: of ocean-surface waves, $2\pi/K$; $\Lambda_\mathrm{Bragg}$ below) & m & $\gg\lambda$ (L7) & 7, 8 & D61, D67 \\
+d_\mathrm{ant} & largest dimension of an antenna (far field: $R\ge2d_\mathrm{ant}^2/\lambda$) & m & -- & 7 & D62 \\
+\theta_i', \theta_t' & local angles of incidence and transmission (from the local normal) (L8: $\theta_i'$ of a tilted patch, handwritten $\theta_m$) & rad & -- & 7, 8 & D57, D74, D78 \\
+m_s & characteristic surface slope, $h/\ell$ (Ulaby \& Long rms slope $=\sqrt2\,h/\ell$, Gaussian) & dimensionless & -- & 7 & D49 \\
+\rho_p(0) & Fresnel reflection coefficient at normal incidence ($p$ pol.) & dimensionless & -- & 7 & D46, D86 \\
+\multicolumn{6}{l}{\emph{Ocean surface and Bragg scattering (Lecture 8)}} \\
+g & gravitational acceleration & m/s$^2$ & $9.81$ & 8, 10 & F11 \\
+\gamma_\mathrm{st} & surface tension (handwritten $\gamma$) & N/m & $0.0728$ (clean water, 20\textdegree C) & 8 & D66 \\
+\gamma_{\mathrm{st},1}, \gamma_{\mathrm{st},2} & surface tension of clean water and of surfactant-covered water (L8, Fig.~1) & N/m & $0.0728$; $0.035$ (illustrative) & 8 & D66 \\
+\rho_w & mass density of water & kg/m$^3$ & $\approx1000$ & 8 & D75, D91 \\
+K & wavenumber of an ocean-surface wave, $2\pi/\Lambda$ (as in Ulaby \& Long, Ch.~16--17) & rad/m & -- & 8 & D64 \\
+\Psi(\omega) & frequency spectrum of the ocean-surface height (Pierson--Moskowitz; handwritten $\Lambda(\omega)$) & m$^2$\,s & -- & 8 & D67 \\
+U & wind speed (handwritten $u_w$) & m/s & -- & 8 & D68, D95 \\
+\phi_\mathrm{wind} & angle between the plane of incidence and the wind direction (handwritten $\alpha$) & rad & -- & 8 & D69 \\
+A, a, b, n & empirical coefficients of the wind model function $\sigma_{pp}^0 = AU^n(1 + a\cos\phi_\mathrm{wind} + b\cos2\phi_\mathrm{wind})$ & varies & -- & 8 & \begin{tabular}[t]{@{}l@{}}D70, D90,\\ D99, D148\end{tabular} \\
+\Lambda_\mathrm{Bragg} & Bragg wavelength of the surface roughness, $\lambda/(2\sin\theta_i)$ & m & -- & 8 & D61 \\
+K_\mathrm{Bragg} & Bragg wavenumber, $2k\sin\theta_i$ & rad/m & -- & 8 & D64 \\
+\alpha_{hh}, \alpha_{vv} & first-order small-perturbation scattering coefficients ($\alpha_{hh}=\rho_h$) & dimensionless & -- & 8 & D71 \\
+\psi & in-plane tilt of a rough patch (in the plane of incidence) & rad & -- & 8 & \\
+\zeta & anti-plane tilt of a rough patch (handwritten glyph as for the L7 surface height $\xi$) & rad & -- & 8 & D72 \\
+S_{pq} & rotated scattering coefficient of a tilted rough patch; $|S_{pq}|^2$ is its polarization-dependent reflectivity (handwritten $\Gamma_{pq}$) & dimensionless & -- & 8 & D73 \\
+\multicolumn{6}{l}{\emph{Volume scattering (Lecture 9)}} \\
+\kappa_\mathrm{e}^p & extinction coefficient ($p$ polarization; power attenuation factor), $\kappa_\mathrm{a}^p+\kappa_\mathrm{s}^p$ (as in Ulaby \& Long) (L13: $\kappa_\mathrm{e}$, no polarization index) & Np/m & -- & 9, 13 & D81, D145 \\
+\kappa_\mathrm{a}^p & absorption coefficient, $-2k_0\,\mathrm{Im}\{\sqrt{\varepsilon}\} = 2\alpha$ (L11: $\kappa_\mathrm{a}$, no polarization index, of a pressure-broadened line) & Np/m & -- & 9, 11, 13 & \begin{tabular}[t]{@{}l@{}}D81, D111,\\ D148\end{tabular} \\
+\kappa_\mathrm{s}^p & scattering coefficient (scattering losses) (L13: $\kappa_\mathrm{s}$) & Np/m & -- & 9, 13 & D81 \\
+\Upsilon_p & one-way transmissivity of a canopy, $e^{-\kappa_\mathrm{e}^pd/\cos\theta_i}$ (as in Ulaby \& Long) & dimensionless & $0$--$1$ & 9 & D80 \\
+\hat{\sigma}^\mathrm{back}_{pq},\ \hat{\sigma}^\mathrm{bist}_{pq} & volume backscattering and bistatic scattering coefficients (cross section per unit volume; handwritten with a hat; Ulaby \& Long: $\sigma_{\mathrm{v}_{pq}}$) & m$^{-1}$ & isotropic: $\kappa_\mathrm{s}$ & 9 & D76 \\
+\sigma^\mathrm{back}_{pq} & backscattering cross section of a single particle & m$^2$ & -- & 9 & \\
+N_\mathrm{v} & number density of scattering particles & m$^{-3}$ & -- & 9 & D77 \\
+\sigma^0_{\mathrm{s},pq} & backscattering coefficient of the bare ground surface & dimensionless & -- & 9 & D81 \\
+\sigma^0_{\mathrm{g},pq}, \sigma^0_{\mathrm{c},pq}, \ldots & contributions to $\sigma^0_{pq}$ of a canopy: direct ground ($\sigma^0_{\mathrm{g},pq}$), direct canopy ($\sigma^0_{\mathrm{c},pq}$), ground--canopy ($\sigma^0_{\mathrm{gc},pq}$), canopy--ground ($\sigma^0_{\mathrm{cg},pq}$), total canopy--ground ($\sigma^0_{\mathrm{cgt},pq}$), ground--canopy--ground ($\sigma^0_{\mathrm{gcg},pq}$) & dimensionless & -- & 9 & \\
+\sigma^0_{\mathrm{as},pq} & backscattering coefficient of the air--snow interface & dimensionless & -- & 9 & \\
+\mathcal{S}_0^i, \mathcal{S}_q^i(z) & incident power density in free space; $q$-polarized power density at depth $z$ in the canopy & W/m$^2$ & -- & 9 & D82 \\
+\mathcal{S}_{r,p} & $p$-polarized power density at the receiving antenna (as $\mathcal{S}_r$ in L7) & W/m$^2$ & $P_p^\mathrm{rer}/(4\pi R^2)$ & 9 & D81 \\
+P_p^\mathrm{rer} & $p$-polarized power reradiated by the canopy & W & -- & 9 & D30 \\
+A_0 & cross-sectional area of the incident beam (horizontal area $A = A_0/\cos\theta_i$) & m$^2$ & -- & 9 & D82 \\
+\Gamma_p^\mathrm{coh} & coherent reflectivity of a rough (quasi-specular) surface, $\Gamma_p e^{-4k_0^2h^2\cos^2\theta_i}$ (handwritten $\Gamma^p_\mathrm{coh}$; Ulaby \& Long Eq.~5.110) & dimensionless & $\le\Gamma_p$ & 9 & \\
+c_\mathrm{add} & coherent-addition factor in the total $\sigma^0_{pq}$ (Ulaby \& Long: $n$) & dimensionless & 1 ($p\ne q$), 2 ($p=q$) & 9 & D79 \\
+\multicolumn{6}{l}{\emph{Standard atmosphere (Lecture 10)}} \\
+P & atmospheric pressure (as in Ulaby \& Long, Eqs.~8.4--8.6) & Pa (U\&L: mbar) & -- & 10, 11 & D87 \\
+P_0, T_0 & sea-level pressure and standard temperature (L11: $T_0 = 273$~K is also the reference temperature of the damping coefficient $\nu_0$) & Pa; K & $1013.25$ mbar; $288.15$ K (L11 reference: 273 K) & 10, 11 & D87, D88, D116 \\
+\rho_\mathrm{air}, \rho_{\mathrm{air},0} & mass density of dry air; its sea-level value (Ulaby \& Long, Eq.~8.2: $\rho_0$) & kg/m$^3$ & $\rho_{\mathrm{air},0} = 1.225$ & 10 & D86, D88 \\
+\rho_\mathrm{vap}, \rho_{\mathrm{vap},0} & water-vapor density; its sea-level value (Ulaby \& Long, Eq.~8.7: $\rho_\mathrm{v}$, $\rho_\mathrm{v0}$) & kg/m$^3$ & $\rho_{\mathrm{vap},0} = 7.72\times10^{-3}$ & 10 & D85, D88 \\
+c_p & specific heat of dry air at constant pressure & J\,kg$^{-1}$K$^{-1}$ & ${\sim}10^3$ (1004) & 10 & D89, D140 \\
+M & molar mass of dry air & kg/mol & $2.9\times10^{-2}$ & 10 & \\
+a & temperature lapse rate, $-dT/dz$ (as in Ulaby \& Long, Eq.~8.1) & K/m & $6.5$ K/km (standard atmosphere) & 10, 11 & D90, D148 \\
+a_\mathrm{d}, a_\mathrm{moist} & dry and moist adiabatic lapse rates ($a_\mathrm{d} = g/c_p$; $a_\mathrm{moist}(T,P)$) & K/m & $a_\mathrm{d} \approx 9.8$ K/km & 10 & D90, D91 \\
+H_p, H_\rho & pressure and density scale heights ($H_p = R_\mathrm{gas}T_0/(gM)$) & m & $H_p \approx 8.4$ km; $H_\rho \approx H_p$ & 10, 11 & D94 \\
+H_\mathrm{vap} & water-vapor scale height & m & 2--2.5 km & 10 & D85, D94 \\
+\multicolumn{6}{l}{\emph{Molecular energy states (Lecture 10)}} \\
+\mathcal{E} & total internal energy of a molecule, $\mathcal{E}_\mathrm{e} + \mathcal{E}_\mathrm{v} + \mathcal{E}_\mathrm{r}$ (as in Ulaby \& Long; handwritten $U$) (L12: energy of a Planck oscillator, handwritten $E$) & J & -- & 10--12 & D95, D126 \\
+\mathcal{E}_\mathrm{e}, \mathcal{E}_\mathrm{v}, \mathcal{E}_\mathrm{r} & electronic, vibrational, rotational energy of a molecule & J & -- & 10, 11 & D95 \\
+\omega_\mathrm{rot}, \omega_\mathrm{vib} & angular velocity of a molecule's rotation; natural angular frequency of a molecular vibration & rad/s & -- & 10, 11 & D96 \\
+\omega_1\text{--}\omega_4 & angular frequencies of rotational absorption lines 1--4 & rad/s & $\omega_2 = 2\omega_1$, etc. & 10 & D96 \\
+\lambda_1\text{--}\lambda_4 & wavelengths of rotational absorption lines 1--4 & m & $2\pi c/\omega$ & 10 & \\
+J & rotational quantum number (as in Liou; handwritten $\ell$) & dimensionless & $0, 1, 2, \ldots$ & 10, 11 & D98, D149 \\
+n_\mathrm{vib} & vibrational quantum number (Liou: $\upsilon_k$; handwritten $n_\mathrm{v}$) (L11: $n_{\mathrm{vib},k}$ of normal mode $k$, handwritten $\nu_k$; with $\omega_{\mathrm{vib},k}$, handwritten $\omega_k$) (L12: quantum number of a Planck oscillator, handwritten ``principal quantum number'' $n$) & dimensionless & $0, 1, 2, \ldots$ & 10--12 & D99, D106 \\
+\multicolumn{6}{l}{\emph{Electronic energy and absorption line shapes (Lecture 11)}} \\
+\Delta\mathcal{E} & difference of the internal energies of two molecular states; energy of the absorbed or emitted photon, $\hbar\omega$ (Bohr's formula; handwritten $\Delta E$) (L12: quantum of energy of a Planck oscillator) & J & -- & 11, 12 & D100 \\
+\nu_1, \nu_2, \nu_3 & labels of the symmetric, bending and antisymmetric vibrational normal modes (as in Liou, Fig.~3.3) & -- & -- & 11 & D107 \\
+L & angular momentum of an electron (Bohr), $n_\mathrm{el}\hbar$ & J\,s & -- & 11 & D102, D131 \\
+n_\mathrm{el} & principal quantum number (Bohr; handwritten $n$) & dimensionless & $1, 2, 3, \ldots$ & 11 & D101 \\
+m_\mathrm{e} & electron mass & kg & $9.109\times10^{-31}$ & 11 & D103 \\
+R_H & Rydberg constant for hydrogen & m$^{-1}$ & $1.097\times10^{7}$ & 11 & D104 \\
+\mathcal{T}_1, \mathcal{T}_2 & transitions illustrated on a potential-energy diagram (handwritten $T_1$, $T_2$) & -- & -- & 11 & D105 \\
+\nu_0 & reference damping coefficient, at $P_0$ and $T_0 = 273$~K (handwritten $\gamma_0$) & s$^{-1}$ & -- & 11 & D108 \\
+\delta & temperature exponent of the damping coefficient, $\nu = \nu_0(P/P_0)(T_0/T)^\delta$ (Liou: $n$) & dimensionless & $\tfrac12$--1 & 11 & D109 \\
+S & spectral line strength (L11: $\int\kappa_\mathrm{a}\,d\omega = \pi\omega_p^2/(2c)$ for the Lorentz line; $\int\kappa_{\mathrm{a},\mathrm{D}}\,d(k/2\pi)$ for the Doppler line; the two differ by $2\pi c$) & varies & -- & 11 & D110 \\
+\kappa_{\mathrm{a},\mathrm{D}} & absorption coefficient of a Doppler-broadened line (handwritten $\kappa_\mathrm{d}$) & Np/m & -- & 11 & D111 \\
+\alpha_\mathrm{D}, \alpha & Doppler width, $(k_\mathrm{line}/2\pi)\sqrt{2k_BT/(m_\mathrm{m}c^2)}$ (as in Liou, Eq.~1.3.18); width parameter of a line ($\nu/(4\pi c)$ or $\alpha_\mathrm{D}$) & m$^{-1}$ & -- & 11 & D112 \\
+k_\mathrm{line} & (L11 Doppler line) wavenumber at the line center, $\omega_0/c$ (handwritten $k_0$) & rad/m & -- & 11 & D113 \\
+m_\mathrm{m} & molecular mass & kg & -- & 11 & D114 \\
+u_g & group velocity, $\partial\omega/\partial k$ (handwritten $v_g$) & m/s & -- & 11 & D115 \\
+\multicolumn{6}{l}{\emph{Atmospheric scattering and black body radiation (Lecture 12)}} \\
+r & radius of a scattering particle (as in Ulaby \& Long, Ch.~8) & m & $\ll\lambda$ (Rayleigh) & 12 & D124 \\
+\alpha_\mathrm{pol} & polarizability of a particle, $\mathbf{p}_0 = \alpha_\mathrm{pol}\mathbf{E}^i$ (handwritten $\alpha$; Gaussian units, as in Liou: dimension of volume) & cm$^3$ (Gaussian) & $r^3(n^2-1)/(n^2+2)$ (sphere) & 12 & D118 \\
+\mathbf{E}_\mathrm{stat}, \mathbf{E}_\mathrm{ind}, \mathbf{E}_\mathrm{rad} & static, induction and radiation fields of an oscillating dipole (handwritten $\mathbf{E}_s$, $\mathbf{E}_I$, $\mathbf{E}_R$) & V/m & -- & 12 & D121 \\
+\theta, \theta_1, \theta_2 & angle between the scattered dipole moment and the direction of observation; its values for the $h$ and $v$ components (Liou: $\gamma$, $\gamma_1$, $\gamma_2$) & rad & $\theta_1 = \pi/2$, $\theta_2 = \pi/2-\Theta$ & 12 & D120 \\
+\Theta & scattering angle, between the incident and scattered directions (as in Liou; handwritten $\phi$) & rad & $0$--$\pi$ & 12 & D119 \\
+\mathbf{E}^s, E_h^s, E_v^s & field scattered by a dipole; its components perpendicular ($h$) and parallel ($v$) to the scattering plane (handwritten $\mathbf{E}$, $E_h$, $E_v$) & V/m & -- & 12 & D133, D136 \\
+I, I_h, I_v, I_p & intensity (power per unit area); scattered intensity by polarization (L12: also $I = \pi L$, the flux density emitted by a black body) (L13, page L3, Eq.~5: $I \approx \pi P/(A_\mathrm{eff}\Omega_\mathrm{s}) = \sigma_\mathrm{SB}T^4$, flux density of a black body) & W/m$^2$ & black body: $\sigma_\mathrm{SB}T^4$ & 12, 13 & \begin{tabular}[t]{@{}l@{}}D123, D134,\\ D138\end{tabular} \\
+I_0, I_{0h}, I_{0v} & incident intensity and its $h$, $v$ parts & W/m$^2$ & $I_{0h} = I_{0v} = I_0/2$ (unpolarized) & 12 & D122 \\
+c_1, c_2 & coefficients of the small-size (Mie) correction series $1 + c_1k^2r^2 + c_2k^4r^4 + \ldots$ & dimensionless & $c_1 = \tfrac65(n^2-2)/(n^2+2)$ & 12 & D135 \\
+\mathcal{E}_\mathrm{ex} & energy of an oscillator state above the ground state (handwritten $\tilde{E}$, $\tilde{U}$, low-confidence reading) & J & $0, \hbar\omega, 2\hbar\omega, \ldots$ & 12 & D126 \\
+\mathcal{E}_\mathrm{tot} & total energy of the oscillators with frequency $\omega$ (handwritten $E$) & J & -- & 12 & D126 \\
+N, N_0, N_\omega & number of oscillators with energy $\mathcal{E}_\mathrm{ex}$; in the ground state; total with frequency $\omega$ & dimensionless & -- & 12 & D122, D125 \\
+u_f & monochromatic energy density, per unit frequency $f$ (handwritten $u_\omega$; Liou: $u_{\tilde{\nu}}$) & J\,m$^{-3}$Hz$^{-1}$ & -- & 12 & D127 \\
+A & number of cavity modes per unit volume per unit frequency, $8\pi f^2/c^3$ & m$^{-3}$Hz$^{-1}$ & -- & 12 & D128 \\
+B_f, B_\lambda & Planck function (spectral radiance) per unit frequency (handwritten $B_\omega$; L13: also $B_f(\theta,\phi)$ from direction $(\theta,\phi)$) and per unit wavelength (Liou: $B_{\tilde{\nu}}$, $B_\lambda$; Ulaby \& Long: $I_f$, $I_\lambda$) & W\,m$^{-2}$ sr$^{-1}$ Hz$^{-1}$; W\,m$^{-3}$ sr$^{-1}$ & -- & 12, 13 & D129 \\
+\lambda_\mathrm{max} & wavelength of the peak of $B_\lambda$ (Wien) & m & $b_W/T$ & 12 & \\
+L & total radiance, $\int B_\lambda\,d\lambda$ (``total radiant intensity''; Liou: $B(T)$) & W\,m$^{-2}$sr$^{-1}$ & $bT^4$ & 12, 13 & D131, D134 \\
+b & constant in $L = bT^4$, $2\pi^4k_B^4/(15c^2h^3) = \sigma_\mathrm{SB}/\pi$ (as in Liou, Eq.~1.2.7) & W\,m$^{-2}$ sr$^{-1}$ K$^{-4}$ & $1.805\times10^{-8}$ & 12 & D130 \\
+z & dimensionless integration variable, $hc/(\lambda k_BT)$ (Liou: $x$) (L13: $hf/(k_BT)$ in the Rayleigh--Jeans expansion, handwritten $\gamma$) & dimensionless & -- & 12, 13 & D132, D139 \\
+\multicolumn{6}{l}{\emph{Radiometry and radiative transfer (Lecture 13)}} \\
+P_f & spectral power received by an antenna (handwritten $P_\omega$; Ulaby \& Long: $P_f$) & W/Hz & $B_fA_\mathrm{eff}\Omega_\mathrm{s}$ & 13 & D30, D129 \\
+P & total power received by an antenna (L13) & W & -- & 13 & D30, D87 \\
+A_\mathrm{s} & area of a black-body source (handwritten $A_s$) & m$^2$ & -- & 13 & D141 \\
+\Omega, d\Omega & solid angle; its differential (as in Ulaby \& Long and Liou) & sr & $4\pi$ (all directions) & 13 & D25 \\
+\Omega_\mathrm{r}, \Omega_\mathrm{s} & solid angles subtended by the receiving antenna (at the source) and by the source (at the antenna) (handwritten $\Omega_r$, $\Omega_s$) & sr & $A_\mathrm{eff}/R^2$; $A_\mathrm{s}/R^2$ & 13 & D141 \\
+f_\mathrm{low}, f_\mathrm{high} & lower and upper limits of a receiver band (also $f_1$, $f_2$) & Hz & -- & 13 & \\
+\Delta f & receiver bandwidth (Ulaby \& Long: $B$) (L14: bandwidth of the instrument; on page L8 also the frequency excursion of a chirp, $|\Delta f| = B$) & Hz & $f_\mathrm{high}-f_\mathrm{low}$ & 13, 14 & D151 \\
+F(\theta,\phi) & normalized radiation pattern of an antenna (as in Ulaby \& Long, Eq.~3.16) & dimensionless & max.\ 1 & 13 & D143 \\
+\theta, \phi & colatitude (polar angle) and longitude (azimuth) in spherical coordinates & rad & -- & 13 & D144 \\
+c_p & polarization factor of an antenna (Ulaby \& Long write $\tfrac12$) & dimensionless & 1 (non-polarized), $\tfrac12$ (polarized) & 13 & D140 \\
+\Omega_\mathrm{p} & antenna pattern solid angle, $\iint_{4\pi}F\,d\Omega$ (as in Ulaby \& Long; handwritten $\Omega_p$) & sr & $\lambda^2/A_\mathrm{eff}$ & 13 & D142 \\
+P_\mathrm{bb}, P(\theta,\phi) & power received from a black body; from a material & W & $P_\mathrm{bb} = k_BT\Delta f$ & 13 & D30 \\
+I, I_\mathrm{bb} & brightness (intensity), a radiance, of a material and of a black body, integrated over $\Delta f$, one polarization (as in Ulaby \& Long, Eqs.~6.24--6.25); also $I(\mathbf{r},\hat{\mathbf{R}})$ & W\,m$^{-2}$sr$^{-1}$ & $k_B\Delta f\,T_\mathrm{B}/\lambda^2$ & 13 & D138 \\
+e & emissivity & dimensionless & $0$--$1$ & 13 & D145 \\
+T_\mathrm{B} & brightness temperature (handwritten $T_B$) & K & $eT$ & 13 & D146 \\
+T_\mathrm{VS} & volume scattered radiometric temperature (handwritten $T_{VS}$; as in Ulaby \& Long) & K & -- & 13 & D146 \\
+\hat{\mathbf{R}}, \hat{\mathbf{R}}' & direction of propagation; direction of radiation scattered into $\hat{\mathbf{R}}$ & dimensionless & -- & 13 & D147 \\
+dA, dR & cross-sectional area and length of a radiative-transfer volume element & m$^2$; m & -- & 13 & D34 \\
+J, J_\mathrm{a}, J_\mathrm{s} & total, absorption and scattering source functions (handwritten $J_a$, $J_s$; as in Ulaby \& Long) & W\,m$^{-2}$sr$^{-1}$ & $J = (1-a)J_\mathrm{a} + aJ_\mathrm{s}$ & 13 & D149 \\
+a & single-scattering albedo, $\kappa_\mathrm{s}/\kappa_\mathrm{e}$ (as in Ulaby \& Long) & dimensionless & $0$--$1$ & 13 & D148 \\
+\tau_\mathrm{opt} & optical depth, $d\tau_\mathrm{opt} = \kappa_\mathrm{e}\,dR$ (handwritten $\tau$) & Np (dimensionless) & -- & 13 & D137 \\
+\multicolumn{6}{l}{\emph{Imaging radar and SAR (Lecture 14)}} \\
+W, L & width and (along-track) length of a radar antenna (as in van Zyl) & m & $L = 12$~m (L14 example) & 14 & D158 \\
+h & altitude of a radar above the surface (as in van Zyl) & m & 800~km (L14 example) & 14 & D159 \\
+\theta & look angle, from the vertical to the center of the beam (as in van Zyl) & rad & $\theta_i$ (flat Earth, no topography) & 14 & D160 \\
+\theta_r, \theta_a & beamwidths in range and azimuth (as in van Zyl) & rad & $\lambda/W$, $\lambda/L$ & 14 & D156 \\
+S_r, S_a & range and azimuth extents of the radar footprint on the ground (van Zyl: $S$, $x_a$) & m & flat Earth: L14, Eqs.~2--3 & 14 & D157 \\
+X_r, X_g, X_a & slant-range, ground-range and azimuth resolutions ($X_a^\mathrm{RAR}$, $X_a^\mathrm{SAR}$: real and synthetic aperture) (van Zyl: $x_r$, $x_g$, $x_a$) & m & $c\tau_\mathrm{eff}/2$; $X_a^\mathrm{SAR} = L/2$ & 14 & D157 \\
+\Delta t & separation in time of two radar echoes & s & $2X_r/c$ & 14 & \\
+\tau_\mathrm{eff}, \tau_p & effective pulse length (handwritten $\tau$) and true pulse duration (van Zyl: $\tau$, $\tau_p$) & s & $\tau_\mathrm{eff} = 1/B$ & 14 & D150 \\
+P_\mathrm{N} & thermal noise power of a receiver (handwritten $P_N$; as in van Zyl) & W & $k_BT\Delta f$ & 14 & D162 \\
+\mathrm{SNR} & signal-to-noise ratio & dimensionless & $P_r/P_\mathrm{N}$ & 14 & \\
+B, B_\mathrm{D} & pulse (chirp) bandwidth; Doppler bandwidth (as in van Zyl) & Hz & $1/\tau_\mathrm{eff}$; $2v/L$ & 14 & D151 \\
+f_0 & center (carrier) frequency of a chirp (as in van Zyl) & Hz & $\omega_0/2\pi$ & 14 & D152 \\
+A(t), A_0 & transmitted (chirp) signal and its amplitude & arb. & -- & 14 & D152, D153 \\
+\phi, \phi(s) & phase constant of $A(t)$; phase of a SAR signal after range compression & rad & $\phi(s) = -4\pi R(s)/\lambda$ & 14 & D60, D144 \\
+V_r(t), V_\mathrm{o}(t) & received signal; compressed (matched-filter output) signal (van Zyl: $V_o$) & arb. & $V_r = E_rA(t - 2R/c)$ & 14 & D153 \\
+E_r & field received from a point scatterer (scale factor of the replica; as in van Zyl) & arb. & -- & 14 & D154 \\
+\xi & integration variable (time) of the matched filter (L14) & s & -- & 14 & D155 \\
+s, s_\mathrm{tot} & slow time (time along the flight path); time a scatterer spends in the beam (as in van Zyl) & s & $s_\mathrm{tot} = \lambda R_0/(Lv)$ & 14 & D161 \\
+R_0 & range at closest approach (as in van Zyl) & m & -- & 14 & D152 \\
+v & platform velocity (as in van Zyl; handwritten $V$ or $v$) & m/s & -- & 14 & D161 \\
+\mathrm{PRF} & pulse repetition frequency & Hz & $\ge 2v/L$ & 14 & \\
+\end{longtable}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dual usages}
+
+Each entry needs instructor approval. Status is \pending{} until approved, then \approved{} with the date.
+
+\subsection*{Present in the notes}
+\begin{longtable}{l >{\raggedright\arraybackslash}p{0.45\textwidth} l l}
+\hline
+ID & Dual usage & Lectures & Status \\
+\hline
+\endhead
+D1 & Subscript 0 means ``free space'' in $\varepsilon_0$, $\mu_0$, but ``zero frequency (static)'' in $\varepsilon_{w0}$, $\varepsilon_{i0}$, and ``natural/resonant'' in $\omega_0$. Lecture 1 already warns $\varepsilon_{w0}\ne\varepsilon_0$. (Ulaby \& Long use the same notation.) & 1 & \approved{} 2026-09-28 \\
+D2 & $E$ was used for both a time-varying field and its complex amplitude. Resolved: phasors carry a tilde ($E(t) = \mathrm{Re}[\tilde{E}e^{j\omega t}]$; $\xi(t) = \mathrm{Re}[\tilde{\xi}e^{j\omega t}]$). Amended 2026-09-29 (instructor decision): Re$[\cdot]$ added, consistent with D12 and the Lecture 2 phasor box. & 1 & \resolved{} 2026-09-28 \\
+D3 & $K$ is thermal conductivity; $K_\mathrm{spring}$ is a spring constant (same letter, different quantities). & 1 & \approved{} 2026-09-28 \\
+D4 & $e$ is the elementary charge and also the base of the natural exponential ($e^{j\omega t}$). Universal convention. & 1 & \approved{} 2026-09-28 \\
+D5 & Variable letters that are also SI unit symbols: $C$ (capacitance) vs.\ C (coulomb); $S$ (salinity) vs.\ S (siemens); $F$ (force) vs.\ F (farad); $V$ (potential) vs.\ V (volt); $A$ (area) vs.\ A (ampere); $K$ (thermal conductivity) vs.\ K (kelvin). Distinguished only by italic vs.\ roman type. & 1 & \approved{} 2026-09-28 \\
+D6 & $T$ is in kelvin in physical laws (e.g.\ $\sigma = K/(LT)$) but in \textdegree C in empirical fits ($\varepsilon_{w0}(T)$, $\tau_w(T)$, double-Debye parameters). Same symbol, different units. & 1 & \approved{} 2026-09-28 \\
+D7 & $\varepsilon_{w\infty}$ takes model-dependent values: 4.9 (single-Debye) vs.\ 2.8--4.0 (double-Debye, $T$- and $S$-dependent). Lecture 1 notes this explicitly. & 1 & \approved{} 2026-09-28 \\
+D8 & Base letter $\varepsilon$ is used for both dimensionless relative quantities ($\varepsilon$, $\varepsilon'$, $\varepsilon''$, $\varepsilon_{w0}$, \ldots) and absolute permittivities in F/m ($\varepsilon_0$, $\varepsilon_\mathrm{material}$). & 1 & \approved{} 2026-09-28 \\
+D9 & (Formerly F1.) $\gamma$ was used for both the damping coefficient (L1) and the propagation constant $\gamma=\alpha+j\beta$ (L2; Ulaby \& Long Eqs.~2.55, 4.8). Resolved: L1 damping coefficient renamed $\nu$; $\gamma$ is reserved for the propagation constant. & 1, 2 & \resolved{} 2026-09-28 \\
+D10 & (Formerly F9.) $S$ (salinity, L1) vs.\ the Poynting vector (L2). Resolved: Poynting vector written in script, $\boldsymbol{\mathcal{S}}$ and $\boldsymbol{\mathcal{S}}_\mathrm{av}$ (as in Ulaby \& Long). & 1, 2 & \resolved{} 2026-09-28 \\
+D11 & $\mathbf{H}$ (magnetic field intensity) vs.\ H (henry). Accepted as is: the henry is rarely used, and unit-letter clashes are not tracked. & 1, 2 & \approved{} 2026-09-28 \\
+D12 & Bold $\mathbf{E}$, $\mathbf{H}$ were used for both the time-varying fields and their phasors. Resolved: phasors carry a tilde, $\mathbf{E}(x,y,z,t) = \mathrm{Re}[\tilde{\mathbf{E}}(x,y,z)e^{j\omega t}]$, likewise $\tilde{\mathbf{H}}$ and components $\tilde{E}_x$. & 2 & \resolved{} 2026-09-28 \\
+D13 & $x$ was used for both the displacement in the oscillator model (L1) and a Cartesian coordinate (L2). Resolved: displacement renamed $\xi$ (amplitude $\tilde{\xi}$); $x$ is reserved for the coordinate. & 1, 2 & \resolved{} 2026-09-28 \\
+D14 & Base letter $k$: wavenumber $k$, $k_0$ and propagation unit vector $\hat{\mathbf{k}}$ (L2) vs.\ Boltzmann constant $k_B$ (L1). (The handwritten L2 notes use capital $K$, $K_0$, which would clash with $K$ thermal conductivity, $K_\mathrm{spring}$ and K kelvin; the typeset notes use lowercase, as Ulaby \& Long do.) & 1, 2 & \approved{} 2026-09-29 \\
+D15 & Subscript $p$ means ``plasma'' in $\omega_p$ (L1), ``phase'' in $u_p$, and ``penetration'' in $\delta_p$ (L2). Phase velocity written $u_p$ as in Ulaby \& Long (instead of $v_p$); the three meanings of subscript $p$ remain. & 1, 2 & \approved{} 2026-09-28 \\
+D16 & Subscript 0 would have meant ``reference amplitude at $z=0$'' in $E_{x0}$, beyond the meanings in D1. Resolved: amplitude of the $+z$-propagating wave written $E_x^+$. & 2 & \resolved{} 2026-09-28 \\
+D17 & More variable letters that are also SI unit symbols: $m$ (mass) vs.\ m (metre), $N$ vs.\ N (newton), Np (neper) vs.\ $Np$. Accepted: unit-letter clashes are not tracked. & 1, 2 & \approved{} 2026-09-28 \\
+D18 & (Formerly part of F2.) $\tau$ was both the relaxation time (L1) and the Fresnel transmission coefficient (L4). Resolved: $\tau$ (and $\tau_h$, $\tau_v$) is the transmission coefficient, as in Ulaby \& Long; relaxation times always carry a subscript ($\tau_\mathrm{rel}$ generic; $\tau_w$, $\tau_{w1}$, $\tau_{w2}$, $\tau_i$). & 1, 4 & \resolved{} 2026-09-29 \\
+D19 & $T$ was string tension and transmissivity (L4) and temperature (L1). Resolved: $T$ is temperature only; tension is $F_\mathrm{tension}$; transmissivity $\mathbb{T}$ and reflectivity $\Gamma$ (as in Ulaby \& Long, Eqs.~2.106--2.109). & 1, 4 & \resolved{} 2026-09-29 \\
+D20 & $m$ was particle mass (L1) and string mass per unit length (L4). Resolved: $m_\ell$ for mass per unit length. & 1, 4 & \resolved{} 2026-09-29 \\
+D21 & $f$ was frequency (L1) and string displacement (L4). Resolved: string displacement is $\xi(z,t)$, reusing the L1 displacement symbol for the same kind of quantity. & 1, 4 & \resolved{} 2026-09-29 \\
+D22 & $A$ was plate area (L1) and string amplitudes $A_I$, $A_R$, $A_T$ (L4). Resolved: string amplitudes $\xi_0^i$, $\xi_0^r$, $\xi_0^t$. (Note: subscript 0 here means ``amplitude,'' the meaning D27 removed from $E_0^i$; kept because $\xi^i$ denotes the wave itself.) & 1, 4 & \resolved{} 2026-09-29 \\
+D23 & Incident/reflected/transmitted labels were capital $I$, $R$, $T$ for strings and lowercase $i$, $r$, $t$ for EM waves in L4 (and $I$ is also current, $t$ also time, $i$ also ice in L1). Resolved: lowercase $i$, $r$, $t$ throughout, as superscripts where possible ($\xi^i$, $\phi^r$, $\tilde{\mathbf{E}}^t$); remaining overlaps with ice $i$ and time $t$ accepted as clear from context. & 1, 4 & \resolved{} 2026-09-29 \\
+D24 & $\delta$ was skin/penetration depth (L2) and the string phases (L4). Resolved: string phases $\phi^i$, $\phi^r$, $\phi^t$. & 2, 4 & \resolved{} 2026-09-29 \\
+D25 & $S$ was salinity (L1) and the surface of integration (L4). Resolved: closed surfaces are $\partial\mathcal{V}$ (boundary of a volume $\mathcal{V}$); open surfaces are $\mathcal{A}$ with bounding loop $\partial\mathcal{A}$. ($\Omega$/$\partial\Omega$ rejected: $\Omega$ is solid angle in Ulaby \& Long and Liou.) & 1, 4 & \resolved{} 2026-09-29 \\
+D26 & $P$ was polarization (L1) and the closed integration loop (L4). Resolved: the loop is $\partial\mathcal{A}$, the boundary of the open surface $\mathcal{A}$ (see D25). & 1, 4 & \resolved{} 2026-09-29 \\
+D27 & Subscript 0 would have meant ``amplitude at the interface'' in $E_0^i$, $E_0^r$, $E_0^t$ (Ulaby \& Long notation). Resolved: written $E^i$, $E^r$, $E^t$ (see D22 for the string exception). & 4 & \resolved{} 2026-09-29 \\
+D28 & Subscripts 1, 2 denote strings/media 1 and 2 in L4 ($\varepsilon_1$, $\eta_1$, $\gamma_1$, $k_1$, $\tilde{\mathbf{E}}_1$, $\boldsymbol{\mathcal{S}}_{\mathrm{av}1}$, \ldots) but the double-Debye term index in L1 ($\varepsilon_{w1}$, $\tau_{w1}$, $\tau_{w2}$). Low risk ($w$ distinguishes them). Suggested: accept as is. & 1, 4 & \approved{} 2026-09-29 \\
+D29 & (Formerly F10.) $\theta$ was both the phase of the intrinsic impedance, $\theta_\eta$ (L2, L4), and the incidence/reflection/transmission angles $\theta_i$, $\theta_r$, $\theta_t$ (L5). Resolved: the phase of $\eta$ is $\phi_\eta$ course-wide (as in the L5 handwriting; L2 and L4 updated). Note: $\phi$ also labels the L4 string phases $\phi^i$, $\phi^r$, $\phi^t$, and $\Phi$ (L5) differs only by case. & 2, 4, 5 & \resolved{} 2026-09-29 \\
+D30 & (Formerly F5.) $P$: polarization (L1) vs.\ power, e.g., $P_h^i$ (L5). Accepted. & 1, 5 & \approved{} 2026-09-29 \\
+D31 & Subscripts $h$, $v$ (horizontal, vertical polarization, L5) vs.\ $h$ (plate separation, L1) and the $v$ in $q_v$ (L1, L2); also the labels H/V polarization vs.\ the field $\mathbf{H}$. Accepted: $h$, $v$ subscripts for polarization. & 1, 2, 5 & \approved{} 2026-09-29 \\
+D32 & The accent on the complex angle of refraction would clash with unit-vector hats. Resolved: written with a tilde, $\tilde{\theta}_t$; a tilde marks the complex-valued counterpart of a real quantity (phasors, complex angle). & 5 & \resolved{} 2026-09-29 \\
+D33 & Bold $\mathbf{r}$ (position vector) vs.\ the reflected label $r$ ($\tilde{\mathbf{E}}^r$, $\hat{\mathbf{k}}_r$, $\theta_r$). Accepted. & 5 & \approved{} 2026-09-29 \\
+D34 & $A$: plate area (L1) and cross-sectional beam areas $A_i$, $A_r$, $A_t$ (L5); $\mathcal{A}$ (L4) is also a surface. Accepted (all are areas). & 1, 4, 5 & \approved{} 2026-09-29 \\
+D35 & The handwritten critical-angle symbol $\theta_*$ (L5) clashed with the complex-conjugate superscript $^*$ (L2, L4). Resolved: critical angle $\theta_c$, as in Ulaby \& Long (Eq.~2.98). & 2, 4, 5 & \resolved{} 2026-09-29 \\
+D36 & Subscript $B$: Brewster angle $\theta_B$ (L5) vs.\ Boltzmann constant $k_B$ (L1). Accepted. & 1, 5 & \approved{} 2026-09-29 \\
+D37 & $d$: layer thickness (L6) vs.\ the differential $d$ in $d\mathbf{a}$, $d\boldsymbol{\ell}$, $d/dt$. Accepted. & 4, 6 & \approved{} 2026-09-29 \\
+D38 & $\Phi$ was both the L5 factor relating $\mathbb{T}$ to $|\tau|^2$ and the L6 propagation factor across a layer. Resolved: the L6 factor is $\mathcal{L}$, as in Ulaby \& Long (Eq.~2.141). & 5, 6 & \resolved{} 2026-09-29 \\
+D39 & $A$, $B$: field amplitudes $A_1$, $A_2$, $A_3$, $B_1$, $B_2$ (L6, as in Ulaby \& Long) vs.\ areas $A$, $A_i$ and $B^i$. Accepted. & 1, 5, 6 & \approved{} 2026-09-29 \\
+D40 & Unsubscripted $\rho$ was both the single-interface Fresnel coefficient (L4, L5) and the effective reflection coefficient of a layered composite (L6). Resolved: the effective coefficient is $\rho_\mathrm{eff}$. & 4, 5, 6 & \resolved{} 2026-09-29 \\
+D41 & The layer angles $\theta_2$, $\theta_3$ (L6) are complex in lossy media but lacked the tilde of $\tilde{\theta}_t$ (L5). Resolved: written $\tilde{\theta}_2$, $\tilde{\theta}_3$. & 5, 6 & \resolved{} 2026-09-29 \\
+D42 & Two-index subscripts $\rho_{12}$, $\rho_{21}$, $\rho_{23}$, $\tau_{12}$, $\tau_{21}$ (L6) vs.\ $\tau_{w1}$, $\tau_{w2}$ (L1) and $\rho_h$, $\rho_v$ (L5). Accepted. & 1, 5, 6 & \approved{} 2026-09-29 \\
+D43 & $N$: number of layers (L6) vs.\ number density of dipoles (L1). Suggested: accept, or $N_\mathrm{layers}$. & 1, 6 & \approved{} 2026-09-29 \\
+D44 & $n$ was both the summation index (L6) and the complex index of refraction (L2, L4, L5). Resolved: summation index $p$ ($m$ avoided: mass in L1, $m_\ell$ in L4, and Liou's complex refractive index $m$). & 2, 4, 5, 6 & \resolved{} 2026-09-29 \\
+D45 & (Formerly part of F3.) $\sigma$: electrical conductivity (L1, L2, L4, L5) vs.\ radar cross section $\sigma$, $\sigma_i$ and normalized radar cross section (backscattering coefficient) $\sigma^0$, $\sigma^0_{pq}$ (L7; standard in Ulaby \& Long, Eqs.~5.27a, 5.33a, and van Zyl). The L7 handwriting flags the clash explicitly. Suggested: accept (standard radar notation); conductivity rarely appears in the same context. & 1, 7 & \approved{} 2026-09-29 \\
+D46 & $\rho(r)$ (surface-height correlation function, L7, as in Ulaby \& Long and van Zyl) clashed with the Fresnel coefficient $\rho$ (used on the same page as $\rho_p(0)$). Resolved: correlation function written $\mathcal{C}(r)$. & 4--7 & \resolved{} 2026-09-29 \\
+D47 & $h$: rms surface height (L7; van Zyl's notation; Ulaby \& Long use $s$) vs.\ plate separation $h$ (L1) and the $h$-polarization subscript (L5; on the same page in L7: ``$p = h$ or $v$''). Suggested: $h_\mathrm{rms}$, or $s$ as in Ulaby \& Long (but $s$ also labels scattered quantities, D56). & 1, 5, 7 & \approved{} 2026-09-29 \\
+D48 & $\ell$: correlation length (L7; Ulaby \& Long, van Zyl: $l$) vs.\ length of the loop's long side, $\ell$, and $d\boldsymbol{\ell}$ (L4). Suggested: accept, or $\ell_c$. & 4, 7 & \approved{} 2026-09-29 \\
+D49 & $m = h/\ell$ (L7) clashed with mass $m$ (L1) and differs from Ulaby \& Long's rms slope $m = \sqrt2\,h/\ell$. Resolved: written $m_s$. & 1, 7 & \resolved{} 2026-09-29 \\
+D50 & $\xi$: displacement (L1 oscillator, L4 string) vs.\ local surface height $\xi(x,y)$ (L7; handwritten symbol read as $\xi$, as in van Zyl Eq.~5.1-1, low confidence). Ulaby \& Long also use $\xi$ for the lag distance and for radiation efficiency (Ch.~3). Suggested: accept (both are displacements, cf.\ D21), or $\zeta(x,y)$. & 1, 4, 7 & \approved{} 2026-09-29 \\
+D51 & $p$, $q$: receive and transmit polarization indices (L7, as in Ulaby \& Long) vs.\ summation index $p$ (L6, D44), dipole moment $p$ (L1), and particle charge $q$ and $q_v$ (L1, L2). Suggested: accept (subscripts only, standard in Ulaby \& Long). & 1, 2, 6, 7 & \approved{} 2026-09-29 \\
+D52 & Subscripts $t$/$r$ mean transmit/receive in L7 ($P_t$, $G_r$, $R_t$) but transmitted/reflected in L4--L5; $A_r$ would have been both the receive-antenna area (L7) and the reflected-beam area (L5). Resolved: receive areas written $A_\mathrm{eff}$, $A_{\mathrm{eff},s}$; transmit/receive subscripts otherwise accepted. & 4, 5, 7 & \resolved{} 2026-09-29 \\
+D53 & Plain $r$ for range (L7) vs.\ bold $\mathbf{r}$ (position, L5). Resolved: range written $R$ ($R_t$, $R_r$); $r$ remains the lag in $\mathcal{C}(r)$. & 5, 7 & \resolved{} 2026-09-29 \\
+D54 & $k_x$, $k_y$: spectral wavenumbers of the roughness (L7; handwritten $K_x$, $K_y$, lowercase per D14 and van Zyl) vs.\ the Cartesian components $k_{ix}$, $k_{rx}$, \ldots\ of the wave vectors (L5). Suggested: $\kappa_x$, $\kappa_y$. & 5, 7 & \approved{} 2026-09-29 \\
+D55 & $u$, $v$: lags in $x$ and $y$ (L7; as in Ulaby \& Long, p.~194) vs.\ the $v$-polarization subscript (L5, L7) and $u_p$ (L2). Suggested: accept, or $\Delta x$, $\Delta y$. & 2, 5, 7 & \approved{} 2026-09-29 \\
+D56 & Label $s$: scattered/scatterer in L7 ($\theta_s$, $\phi_s$, $E_p^s$, $\mathcal{S}_s$, $A_{rs}$, $G_{ts}$) vs.\ skin depth $\delta_s$ (L2, L6). Suggested: accept. & 2, 6, 7 & \approved{} 2026-09-29 \\
+D57 & Primes: real parts $\varepsilon'$, $n'$ (L1, L2) vs.\ a second surface point $(x',y')$ and the local angles $\theta_i'$, $\theta_t'$ (L7). Suggested: accept, or $\theta_i^\mathrm{loc}$ for the local angles. & 1, 2, 7 & \approved{} 2026-09-29 \\
+D58 & $f$: frequency (L1) vs.\ $f_a$, fraction of power absorbed by a scatterer (L7). Suggested: accept, or $a_f$. & 1, 7 & \approved{} 2026-09-29 \\
+D59 & Scatterer index $i$ in $\sigma_i$, $A_i$ (L7) clashed with the incident label and the L5 beam area $A_i$. Resolved: written $\sigma_{(n)}$, $A_{(n)}$. & 5, 7 & \resolved{} 2026-09-29 \\
+D60 & $\phi$: scattering azimuth $\phi_s$ (L7) vs.\ phase of $\eta$, $\phi_\eta$ (L2, L4, L5) and the string phases $\phi^i$, $\phi^r$, $\phi^t$ (L4). Suggested: accept. & 2, 4, 5, 7 & \approved{} 2026-09-29 \\
+D61 & $\lambda$: EM wavelength vs.\ $\lambda_\mathrm{surf}$, the wavelength of surface undulations (L7). Resolved: surface wavelength written $\Lambda$. & 7 & \resolved{} 2026-09-29 \\
+D62 & $d_\mathrm{ant}$ (largest antenna dimension, L7) vs.\ layer thickness $d$ (L6) and the differential $d$ (D37). Suggested: accept (subscripted). & 6, 7 & \approved{} 2026-09-29 \\
+D63 & Terminology: $\Gamma_{pq} = |E_p^s|^2/|E_q^i|^2$ is called ``reflectance'' (L7) while $\Gamma = |\rho|^2$ is ``reflectivity'' (L4--L6); $\Gamma_{pq}$ falls off as $1/R^2$. Accepted with a clarifying sentence in L7 explaining the range dependence and the role of $4\pi R^2/A$. & 4, 5, 6, 7 & \approved{} 2026-09-29 \\
+D64 & $K$: wavenumber of ocean-surface waves and $K_\mathrm{Bragg}$ (L8; as in Ulaby \& Long, Ch.~16--17) vs.\ thermal conductivity $K$ and $K_\mathrm{spring}$ (L1); differs from the EM wavenumber $k$ only by case. Suggested: $\kappa$ ($\kappa_\mathrm{Bragg}$), or accept $K$ as in Ulaby \& Long. Approved: $K$ kept. & 1, 2, 8 & \approved{} 2026-09-29 \\
+D65 & $\omega$: angular frequency of ocean-surface waves (L8; Ulaby \& Long use $\Omega$) vs.\ the EM angular frequency (L1--L5). $\Omega$ is kept free for solid angle. Suggested: accept, or $\omega_s$ (surface wave); $\omega_w$ is not advised because subscript $w$ means liquid water (Conventions). Approved: $\omega$ kept. & 1, 2, 4, 5, 8 & \approved{} 2026-09-29 \\
+D66 & Surface tension (handwritten $\gamma$, L8) vs.\ the propagation constant $\gamma$, which D9 reserves. Typeset $\gamma_\mathrm{st}$, following the D18 precedent ($\tau \to \tau_\mathrm{rel}$). Suggested: accept $\gamma_\mathrm{st}$, or use Ulaby \& Long's ratio $B = \gamma_\mathrm{st}/\rho_w$ (p.~869). Approved: $\gamma_\mathrm{st}$ kept. & 2, 8 & \approved{} 2026-09-29 \\
+D67 & $\Lambda(\omega)$: frequency spectrum of the ocean-surface height (L8) vs.\ $\Lambda$, the wavelength of surface undulations (D61), which L8 also uses for ocean-wave wavelengths ($\Lambda = 2\pi/K$, $\Lambda_\mathrm{Bragg}$). Suggested: $\Psi(\omega)$. Resolved: spectrum written $\Psi(\omega)$. & 7, 8 & \resolved{} 2026-09-29 \\
+D68 & $u_w$: wind speed (L8) vs.\ the lag $u$ (L7, D55) and phase velocity $u_p$ (L2, L8); also, subscript $w$ means liquid water by convention (Conventions), not wind. Suggested: $U$ (as in Ulaby \& Long, Ch.~16) or $u_\mathrm{wind}$. Resolved: wind speed written $U$. & 2, 7, 8 & \resolved{} 2026-09-29 \\
+D69 & $\alpha$: angle between the plane of incidence and the wind direction (L8) vs.\ the attenuation constant $\alpha$ (L2, L4, L5) and the coefficients $\alpha_{hh}$, $\alpha_{vv}$ (L8, D71). Suggested: $\phi_\mathrm{wind}$ (Ulaby \& Long's $\chi$ is taken by the L6 ratio; $\phi$ alone is a phase, D60, and subscript $w$ means water). Resolved: wind angle written $\phi_\mathrm{wind}$. & 2, 4, 5, 8 & \resolved{} 2026-09-29 \\
+D70 & $A$, $a$, $b$, $n$ in $\sigma_{pp}^0 = Au_w^n(1 + a\cos\alpha + b\cos2\alpha)$ (L8): $A$ is also an area (L1, L5, L7) and $n$ the index of refraction (L2, L4--L6) and scatterer index $(n)$ (L7). Suggested: accept (local to Eq.~5 of L8), or $A_0$, $c_1$, $c_2$, $n_0$ ($A_w$, $n_w$ would read as ``water''; $a$ also appears in the unit normal $\hat{\mathbf{a}}$ and $d\mathbf{a}$, L4). Approved: $A$, $a$, $b$, $n$ kept. & 1, 2, 5, 7, 8 & \approved{} 2026-09-29 \\
+D71 & $\alpha_{hh}$, $\alpha_{vv}$: first-order small-perturbation scattering coefficients (L8; as in van Zyl, Eqs.~5.2-5, 5.2-6) vs.\ the attenuation constant $\alpha$. Suggested: accept (standard notation, always double-subscripted). Approved: $\alpha_{hh}$, $\alpha_{vv}$ kept. & 2, 4, 5, 8 & \approved{} 2026-09-29 \\
+D72 & $\xi$: anti-plane tilt of a rough patch (L8) vs.\ local surface height $\xi(x,y)$ (L7, D50) and displacement (L1, L4). The handwritten tilt glyph is the same as the L7 surface-height glyph (read as $\xi$, low confidence, possibly $\zeta$); the two appear in the same topic. Suggested: $\zeta$ (or Valenzuela's $\delta$) for the tilt. Resolved: tilt written $\zeta$. & 1, 4, 7, 8 & \resolved{} 2026-09-29 \\
+D73 & $\Gamma_{pq}$: polarization-dependent ``reflectivity'' of a tilted rough patch (L8, a squared rotated scattering coefficient) vs.\ $\Gamma_{pq} = |E_p^s|^2/|E_q^i|^2$, the reflectance of L7 (D63), and the reflectivity $\Gamma = |\rho|^2$ (L4--L6). Suggested: $|S_{pq}|^2$, with $S_{pq}$ the rotated scattering coefficient (as in van Zyl; $S$ alone is salinity, but the subscript $pq$ distinguishes it). Resolved: written $|S_{pq}|^2$. & 4--8 & \resolved{} 2026-09-29 \\
+D74 & Local angle of incidence of a tilted patch: handwritten $\theta_m$ (L8), typeset $\theta_i'$, the master-table symbol for the same quantity (L7). Suggested: accept $\theta_i'$ (or keep $\theta_m$ in L8). Approved: $\theta_i'$ used. & 7, 8 & \approved{} 2026-09-29 \\
+D75 & $\rho_w$: mass density of water (L8) vs.\ $\rho$ reserved for Fresnel reflection coefficients (F7), where subscript $w$ (water) could read as ``Fresnel coefficient of water.'' Suggested: accept, or avoid it with Ulaby \& Long's $B = \gamma_\mathrm{st}/\rho_w$. Approved: $\rho_w$ kept. & 4, 5, 8 & \approved{} 2026-09-29 \\
+D76 & $\hat{\sigma}^\mathrm{back}_{\mathrm{v},pq}$, $\hat{\sigma}^\mathrm{bist}_{\mathrm{v},pq}$: volume backscattering and bistatic scattering coefficients (L9; handwritten with a hat, low-confidence reading, possibly a check accent; Ulaby \& Long write $\sigma^\mathrm{back}_{\mathrm{v}_{pq}}$ without one). The hat marks unit vectors elsewhere ($\hat{\mathbf{k}}$, $\hat{\mathbf{a}}$, $\hat{\mathbf{x}}$), and the subscript v (volume, typeset upright) can read as $v$ polarization (D31), e.g., $\hat{\sigma}^\mathrm{back}_{\mathrm{v},vv}$; $\sigma$ is also conductivity and radar cross section (D45). Suggested: drop the subscript v and keep the hat, $\hat{\sigma}^\mathrm{back}_{pq}$ (the hat alone distinguishes it from the particle cross section $\sigma^\mathrm{back}_{pq}$), which removes the polarization reading; or drop the hat as in Ulaby \& Long, $\sigma^\mathrm{back}_{\mathrm{v},pq}$, which removes the unit-vector reading; or accept as is. Resolved: written $\hat{\sigma}^\mathrm{back}_{pq}$, $\hat{\sigma}^\mathrm{bist}_{pq}$ (subscript v dropped, hat kept). & 2, 4, 5, 7, 9 & \resolved{} 2026-09-29 \\
+D77 & $N_\mathrm{v}$: number density of scattering particles (L9, as in Ulaby \& Long) vs.\ $N$, number density of dipoles (L1), and number of layers (L6, D43); the subscript v (volume) can read as $v$ polarization (D31). Suggested: accept (same kind of quantity as the L1 $N$; subscript as in $q_v$). Approved: $N_\mathrm{v}$ kept. & 1, 6, 9 & \approved{} 2026-09-29 \\
+D78 & $\theta_i'$, $\theta_s'$: directions of incidence and scattering at a canopy element in the canopy--ground paths, $\pi/2-\theta_i$ (L9, as in Ulaby \& Long, Fig.~11-6) vs.\ $\theta_i'$, the local angle of incidence from the local normal (L7, L8; D57, D74), and $\theta_s$, the scattering angle (L7). Suggested: introduce no symbol and write the argument explicitly, $\hat{\sigma}^\mathrm{bist}_{\mathrm{v},pq}(\pi/2-\theta_i)$, or use $\vartheta_i$, $\vartheta_s$ (not otherwise used). Resolved: the angle is written $\pi/2-\theta_i$ explicitly, e.g.\ $\hat{\sigma}^\mathrm{bist}_{pq}(\pi/2-\theta_i)$. & 7, 8, 9 & \resolved{} 2026-09-29 \\
+D79 & $c$: factor for incoherent ($c=1$, $p\ne q$) or coherent ($c=2$, $p=q$) addition of the canopy--ground terms (L9) vs.\ the speed of light $c$ (L1--L5). Ulaby \& Long's $n$ would clash with the refractive index $n$ and the scatterer index $(n)$ (L7). The italic $c$ also appears next to the upright subscript c (canopy, $\sigma^0_{\mathrm{c},pq}$) in the same equation (L9 Eq.~18). Suggested: $c_\mathrm{add}$ (subscript, following the precedent of $\gamma_\mathrm{st}$, D66), or accept as is. Resolved: written $c_\mathrm{add}$. & 1, 2, 4, 5, 9 & \resolved{} 2026-09-29 \\
+D80 & Terminology: ``transmissivity'' names both $\Upsilon_p = e^{-\kappa_\mathrm{e}^pd/\cos\theta_i}$, the one-way transmissivity of a canopy (L9, as in Ulaby \& Long, Eq.~11.2), and $\mathbb{T}$, the power transmissivity of an interface (L4, L5; D19), which both appear in the L9 snow model, Eq.~(25). Suggested: accept, with the qualifiers ``canopy (one-way) transmissivity'' and ``interface transmissivity'' (cf.\ D63), or call $\Upsilon_p$ the canopy ``transmittance.'' Approved: accepted, with the qualifiers ``canopy'' ($\Upsilon$) and ``interface'' ($\mathbb{T}$). & 4, 5, 9 & \approved{} 2026-09-29 \\
+D81 & Label s in L9: scattering in $\kappa_\mathrm{s}$ (as in Ulaby \& Long), bare-ground surface in $\sigma^0_{\mathrm{s},pq}$, and scattered in $\mathcal{S}_p^s$ (the power density at the receiving antenna, which L7 calls $\mathcal{S}_r$, while L7's $\mathcal{S}_s$ is the power density at the scatterer) vs.\ skin depth $\delta_s$ and the scattered/scatterer label of L7 (D56). Also the subscripts e (extinction; $e$ is the elementary charge and exponential base, D4) and a (absorption, as in $f_a$) on $\kappa$. Suggested: accept $\kappa_\mathrm{e}$, $\kappa_\mathrm{a}$, $\kappa_\mathrm{s}$ (standard); write the bare-ground coefficient $\sigma^0_{\mathrm{bare},pq}$; write the received power density $\mathcal{S}_{r,p}$ (the L7 symbol) instead of $\mathcal{S}_p^s$. Resolved: $\kappa_\mathrm{e}$, $\kappa_\mathrm{a}$, $\kappa_\mathrm{s}$ and $\sigma^0_{\mathrm{s},pq}$ kept; scattered power density written $\mathcal{S}_{r,p}$, as $\mathcal{S}_r$ in L7. & 2, 6, 7, 9 & \resolved{} 2026-09-29 \\
+D82 & Subscript 0 in $A_0$ (cross-sectional area of the incident beam, L9, as in Ulaby \& Long) and $\mathcal{S}_0^i$ (incident power density in free space, L9), in addition to the meanings in D1 (free space, static, natural/resonant). $\mathcal{S}_0^i$ agrees with the ``free space'' meaning; $A_0$ adds a new one. Suggested: accept, or $A_\mathrm{beam}$. Approved: subscript 0 kept. & 1, 9 & \approved{} 2026-09-29 \\
+D83 & $\Gamma_p$, $\Gamma_p^\mathrm{coh}$: Fresnel and coherent reflectivities for polarization $p$ (L9; handwritten and Ulaby \& Long $\Gamma^p$, $\Gamma^p_\mathrm{coh}$, typeset with the polarization as a subscript like $\Gamma_h$, $\Gamma_v$ of L5) appear in the same equations as $\sigma^0_{pq}$ and can read like the reflectance $\Gamma_{pq}$ of L7 (D63) with a single index (cf.\ D73). Suggested: accept $\Gamma_p$ (generalization of $\Gamma_h$, $\Gamma_v$), or keep the handwritten superscript form $\Gamma^p$, $\Gamma^p_\mathrm{coh}$. Approved: $\Gamma_p$, $\Gamma_p^\mathrm{coh}$ kept. & 5, 7, 9 & \approved{} 2026-09-29 \\
+D84 & $\delta_p = 1/\kappa_\mathrm{e}$: the subscript $p$ of the penetration depth (D15) appears in L9 on the same line as $\kappa_\mathrm{e}^p$, where $p$ is the polarization index (D51). Suggested: accept (D15 already covers penetration $p$; the line in L9 defines $\delta_p$ in words). Approved: $\delta_p$ kept. & 2, 7, 9 & \approved{} 2026-09-29 \\
+D85 & $\rho_\mathrm{v}$, $\rho_\mathrm{v0}$: water-vapor density and its sea-level value, and $H_\mathrm{v}$, the water-vapor scale height (L10; as in Ulaby \& Long, Eq.~8.7). $\rho_\mathrm{v}$ is letter for letter the V-polarized Fresnel reflection coefficient $\rho_v$ (L5, L8, L9; $\rho$ is reserved for Fresnel coefficients, F7), distinguished only by the upright subscript; $H_\mathrm{v}$ reads as the V-polarized magnetic field component (L5, $\tilde{\mathbf{H}}_v$), and $H$ is also the magnetic field (D94). Highest-risk entry of L10, because water vapor and V-polarized reflection appear together in atmospheric and surface emission (L11--13). Suggested: $\rho_\mathrm{vap}$, $\rho_{\mathrm{vap},0}$, $H_\mathrm{vap}$ (no clash in the table), or accept $\rho_\mathrm{v}$, $H_\mathrm{v}$ as in Ulaby \& Long (cf.\ the upright v of $N_\mathrm{v}$, D77). Resolved: written $\rho_\mathrm{vap}$, $\rho_{\mathrm{vap},0}$, $H_\mathrm{vap}$. & 5, 8, 9, 10 & \resolved{} 2026-09-29 \\
+D86 & $\rho_\mathrm{air}$, $\rho_0$: mass density of dry air and its sea-level value (L10; as in Ulaby \& Long, Eq.~8.2) vs.\ $\rho$ reserved for Fresnel reflection coefficients (F7). $\rho_0$ carries no descriptive subscript and reads like $\rho_p(0)$, the Fresnel coefficient at normal incidence (L7), or a Fresnel coefficient with index 0. Suggested: accept $\rho_\mathrm{air}$ (precedent: $\rho_w$, D75) and write the sea-level value $\rho_{\mathrm{air},0}$ (no clash; or $\rho_{\mathrm{air,sl}}$ if D88's subscript sl is adopted). Resolved: $\rho_\mathrm{air}$ kept; sea-level value written $\rho_{\mathrm{air},0}$. & 4, 5, 7, 10 & \resolved{} 2026-09-29 \\
+D87 & $P$: atmospheric pressure, and $P_0$ at sea level (L10; as in Ulaby \& Long, Eqs.~8.4--8.6) vs.\ polarization $P$ (L1) and powers $P_h^i$, $P_t$, $P_r$, $P_p^\mathrm{rer}$ (L5, L7, L9; D30). Lowercase $p$ is not advised (dipole moment, polarization index, summation index; D51). Suggested: accept $P$ (pressure and power do not appear in the same equations in L10), or $P_\mathrm{atm}$, $P_{\mathrm{atm},0}$. Approved: $P$ kept. & 1, 5, 7, 9, 10 & \approved{} 2026-09-29 \\
+D88 & Subscript 0 means ``sea level'' in $P_0$, $T_0$, $\rho_0$, $\rho_\mathrm{v0}$ (L10; as in Ulaby \& Long), in addition to the meanings in D1 (free space, static, natural/resonant) and D82 (beam area $A_0$). Suggested: accept (as in Ulaby \& Long), or subscript sl ($P_\mathrm{sl}$, $T_\mathrm{sl}$, \ldots). Approved: subscript 0 kept. & 1, 9, 10 & \approved{} 2026-09-29 \\
+D89 & $c_p$: specific heat at constant pressure (L10) vs.\ the speed of light $c$ (L1--L5, L10, same lecture: $\lambda = 2\pi c/\omega$); the subscript $p$ (pressure) adds a meaning to D15 (plasma, phase, penetration) and resembles the polarization index $p$ (D51). Suggested: accept (universal thermodynamic notation; cf.\ $c_\mathrm{add}$, D79), or $c_P$. Approved: $c_p$ kept. & 1, 2, 7, 10 & \approved{} 2026-09-29 \\
+D90 & $a$, $a_\mathrm{d}$: temperature lapse rate and dry adiabatic lapse rate (L10; $a$ as in Ulaby \& Long, Eq.~8.1) vs.\ the wind-model coefficient $a$ (L8, D70) and $\hat{\mathbf{a}}$, $d\mathbf{a}$ (L4). The meteorological symbol $\Gamma$ is taken by the reflectivity (D19); subscript d (dry) vs.\ layer thickness $d$ (D37, D62). Suggested: accept $a$ (the L8 coefficient is local to one equation), with $a_\mathrm{dry}$ for the dry adiabatic rate, or write $-dT/dz$ explicitly. Approved: $a$, $a_\mathrm{d}$ kept. & 4, 6, 8, 10 & \approved{} 2026-09-29 \\
+D91 & $a_\mathrm{w}$: moist adiabatic lapse rate (L10) vs.\ the convention that subscript $w$ denotes liquid water (Conventions; $\varepsilon_w$, $\tau_w$, $\rho_w$). Suggested: $a_\mathrm{moist}$ (no clash), or accept. Resolved: written $a_\mathrm{moist}$. & 1, 8, 10 & \resolved{} 2026-09-29 \\
+D92 & $f(T,P)$: generic function (L10, $a_\mathrm{w} = f(T,P)$) vs.\ frequency $f$ (L1) and $f_a$ (L7, D58). Suggested: write the function with the lapse rate's own symbol, $a_\mathrm{w}(T,P)$ (or $a_\mathrm{moist}(T,P)$ if D91 is adopted), or accept. Resolved: written $a_\mathrm{moist}(T,P)$. & 1, 7, 10 & \resolved{} 2026-09-29 \\
+D93 & $R$: universal gas constant (L10; as in Ulaby \& Long, Eq.~8.4) vs.\ range $R$, $R_t$, $R_r$ (L7, L9; D53). Suggested: $R_\mathrm{gas}$ (no clash; $R^*$ is not advised because $^*$ is the complex conjugate, D35), or accept. Resolved: written $R_\mathrm{gas}$. & 7, 9, 10 & \resolved{} 2026-09-29 \\
+D94 & $H_p$, $H_\rho$, $H_\mathrm{v}$: pressure, density and water-vapor scale heights (L10; Ulaby \& Long: $H_1$--$H_4$; Liou: $H$) vs.\ the magnetic field $\mathbf{H}$, $\tilde{H}_x$, $H^\perp$, $\tilde{\mathbf{H}}_h^i$ (L2, L4--L6); subscript $p$ (pressure) adds to D15 and resembles the polarization index. Suggested: accept (standard notation; the magnetic field is bold or carries a tilde), or script $\mathcal{H}_p$, $\mathcal{H}_\rho$ (not otherwise used). See D85 for $H_\mathrm{v}$. Approved: $H_p$, $H_\rho$ kept. & 2, 4--6, 10 & \approved{} 2026-09-29 \\
+D95 & $U$, $U_\mathrm{e}$, $U_\mathrm{v}$, $U_\mathrm{r}$: internal energy of a molecule and its electronic, vibrational and rotational parts (L10) vs.\ wind speed $U$ (L8, D68); subscripts e (elementary charge $e$, D4; extinction $\kappa_\mathrm{e}$, D81), v (V polarization, D31) and r (reflected/receive, D52). Suggested: script $\mathcal{E}$, $\mathcal{E}_\mathrm{e}$, $\mathcal{E}_\mathrm{v}$, $\mathcal{E}_\mathrm{r}$ as in Ulaby \& Long, Eq.~8.9 (script $\mathcal{E}$ is not otherwise used; plain $E$, as in Liou, would trigger F8), with spelled-out subscripts el, vib, rot if desired; or accept $U$. Resolved: written $\mathcal{E}$, $\mathcal{E}_\mathrm{e}$, $\mathcal{E}_\mathrm{v}$, $\mathcal{E}_\mathrm{r}$ (as in Ulaby \& Long). & 1, 4, 5, 7--10 & \resolved{} 2026-09-29 \\
+D96 & $\omega$ has three meanings on two pages of L10: the angular velocity of a molecule's rotation (in $U_\mathrm{r}$, as in Liou p.~18), the natural angular frequency of a molecular vibration (in $U_\mathrm{v}$), and the angular frequency of the EM radiation (line positions $\omega_1$--$\omega_4$ and $\lambda = 2\pi c/\omega$), in addition to the EM and ocean-wave angular frequencies (L1--L8, D65). The line indices 1--4 on $\omega_n$, $\lambda_n$ add to D28. Suggested: $\omega_\mathrm{rot}$ for the rotation rate and $\omega_\mathrm{vib}$ for the vibration frequency ($\omega_0$, the L1 natural frequency of the bond oscillator, is not advised because it collides with the line sequence $\omega_1, \omega_2, \ldots$ on the same page), keeping $\omega$ for the EM wave; or accept with the definitions added in the L10 text. Resolved: written $\omega_\mathrm{rot}$, $\omega_\mathrm{vib}$; $\omega$ stays the EM angular frequency. & 1, 2, 8, 10 & \resolved{} 2026-09-29 \\
+D97 & (Formerly F4.) $h$: Planck constant (L10, in $\hbar = h/2\pi$) vs.\ plate separation $h$ (L1) and rms surface height $h$ (L7--L9, D47). Suggested: accept $h$ and $\hbar$ (universal notation; the rms height could instead be written $h_\mathrm{rms}$, as offered in D47). Approved: $h$, $\hbar$ kept. & 1, 7--13 & \approved{} 2026-09-29 \\
+D98 & $\ell$: rotational quantum number (L10) vs.\ correlation length $\ell$ (L7, L8; D48), loop length $\ell$ and $d\boldsymbol{\ell}$ (L4) and $m_\ell$ (L4). Suggested: $J$, as in Liou (Eqs.~1.3.5--1.3.9) and standard spectroscopy (no clash in the table), or accept. Resolved: written $J$ (as in Liou). & 4, 7, 8, 10 & \resolved{} 2026-09-29 \\
+D99 & $n_\mathrm{v}$: vibrational quantum number (L10) vs.\ the refractive index $n$ (L2, L4--L6), the scatterer index $(n)$ (L7) and the wind-model exponent $n$ (L8, D70); subscript v vs.\ V polarization (D31). Suggested: $n_\mathrm{vib}$ (no clash), or accept; Liou's $\upsilon$ is not advised (it resembles $v$ and is the lowercase of $\Upsilon$, L9). Resolved: written $n_\mathrm{vib}$. & 2, 4--8, 10 & \resolved{} 2026-09-29 \\
+D100 & (Formerly F8.) $E$: electric field (L1, L2, \ldots) vs.\ photon energy, handwritten $\Delta E = \hbar\omega$ (Bohr's formula, L11). Typeset $\Delta\mathcal{E}$, the difference of the molecular internal energies $\mathcal{E}$ (D95; Ulaby \& Long, Eq.~8.10, write $E_m - E_l$ in script). Suggested: accept $\Delta\mathcal{E}$ (no clash), or $\hbar\omega$ written out. Approved: $\Delta\mathcal{E}$. & 1, 10, 11 & \approved{} 2026-09-30 \\
+D101 & $n$: principal quantum number (L11, Bohr, as in Liou Eq.~1.3.2) vs.\ the refractive index $n$, $n'$, $n''$ (L2, L4--L6, and L11 itself, Eq.~10), the scatterer index $(n)$ (L7), the wind-model exponent $n$ (L8, D70) and $n_\mathrm{vib}$ (D99). Suggested: $n_\mathrm{el}$ (parallel to $n_\mathrm{vib}$; subscripts el, vib, rot were offered in D95), or accept (the two uses are in different sections of L11). Resolved: written $n_\mathrm{el}$. & 2, 4--8, 11 & \resolved{} 2026-09-30 \\
+D102 & $L$: angular momentum of an electron (L11, Bohr, as in Liou) vs.\ the Lorenz number $L$ (L1) and the layer propagation factor $\mathcal{L}$ (L6). Suggested: accept (the Lorenz number appears only in L1), or $L_\mathrm{ang}$. Approved: $L$ kept. & 1, 6, 11 & \approved{} 2026-09-30 \\
+D103 & $m_\mathrm{e}$: electron mass (L11) vs.\ particle mass $m$ (L1); subscript e (electron) vs.\ e (electronic) in $\mathcal{E}_\mathrm{e}$ (D95, same lecture), e (extinction) in $\kappa_\mathrm{e}$ (D81) and the elementary charge $e$ (D4), which appears next to $m_\mathrm{e}$ in $\omega_p^2 = Ne^2/(\varepsilon_0m_\mathrm{e})$. Suggested: accept (standard). Approved: $m_\mathrm{e}$ kept. & 1, 9--11 & \approved{} 2026-09-30 \\
+D104 & $R_H$: Rydberg constant for hydrogen (L11, as in Liou) vs.\ range $R$ (L7, L9) and $R_\mathrm{gas}$ (D93); subscript $H$ vs.\ the magnetic field $\mathbf{H}$. Suggested: accept (subscripted like $R_\mathrm{gas}$), or $R_\mathrm{Ryd}$. Approved: $R_H$ kept. & 2, 7, 9--11 & \approved{} 2026-09-30 \\
+D105 & $T_1$, $T_2$: transitions illustrated on the potential-energy diagram (L11 handwriting) vs.\ temperature $T$, which D19 reserves (``$T$ is temperature only''); temperature appears in the same lecture. Typeset $\mathcal{T}_1$, $\mathcal{T}_2$ (script $\mathcal{T}$ is not otherwise used; note its resemblance to the transmissivity $\mathbb{T}$). Suggested: accept $\mathcal{T}_1$, $\mathcal{T}_2$, or Liou's plain labels ``transition 1'' and ``2'' (Fig.~3.4). Approved: $\mathcal{T}_1$, $\mathcal{T}_2$. & 1, 4, 10, 11 & \approved{} 2026-09-30 \\
+D106 & Normal-mode index $k$ in $n_{\mathrm{vib},k}$, $\omega_{\mathrm{vib},k}$ (L11; Liou: $\upsilon_k$, $\tilde{\nu}_k$) vs.\ the wavenumber $k$, $k_0$ (L2 on, and L11 itself). Suggested: accept (inside a compound subscript after vib), or index the modes by their numbers 1--3, as in the labels $\nu_1$--$\nu_3$. Approved: mode index $k$ kept (in subscripts). & 2, 4--9, 11 & \approved{} 2026-09-30 \\
+D107 & $\nu_1$, $\nu_2$, $\nu_3$: standard spectroscopic labels of the symmetric, bending and antisymmetric vibrational modes (L11 table, as in Liou, Fig.~3.3) vs.\ the damping coefficient $\nu$ (L1, and L11 itself, where the handwritten $\gamma$ is written $\nu$ per D9); Liou also uses $\nu$ for wavenumber. Suggested: accept (standard labels, used only as names), or write ``mode 1 (symmetric)'', etc. Approved: $\nu_1$--$\nu_3$ kept. & 1, 11 & \approved{} 2026-09-30 \\
+D108 & $\nu_0$: damping coefficient at sea-level $P_0$, $T_0$ (L11, handwritten $\gamma_0$) uses subscript 0 = sea level (D88) next to $\omega_0$ (natural frequency, D1) and $k_0$ in the same section; in Liou $\nu_0$ is the line-center wavenumber. Suggested: accept (as $P_0$, $T_0$, D88), or $\nu_\mathrm{ref}$. Approved: $\nu_0$ kept. & 1, 10, 11 & \approved{} 2026-09-30 \\
+D109 & $\delta$: temperature exponent of the damping coefficient (L11; handwritten glyph read as $\delta$, low confidence; Liou: $n$) vs.\ the skin and penetration depths $\delta_s$, $\delta_p$ (L2, L6, L9; D24 moved the string phases off $\delta$). Liou's $n$ is not advised (refractive index). Suggested: accept (unsubscripted, one equation), or $b_T$ ($b$ otherwise appears only in the L8 wind model, D70). Approved: $\delta$ kept. & 2, 6, 9, 11 & \approved{} 2026-09-30 \\
+D110 & $S$: spectral line strength (L11; as in Liou, Eq.~1.3.10, and Ulaby \& Long, Eq.~8.19, $S_i$) vs.\ salinity $S$ (L1, D5), the Poynting vector $\boldsymbol{\mathcal{S}}$ (D10) and $S_{pq}$ (L8). Within L11, $S$ also has two definitions with different units: the integral of $\kappa_\mathrm{a}$ over $\omega$ (Eq.~9) and the integral of $\kappa_\mathrm{d}$ over $k/2\pi$ (Eq.~15), which differ by a factor $2\pi c$. Suggested: accept (standard), or $S_\mathrm{line}$ (with the variable of integration stated). Approved: $S$ kept, with a sentence in L11 stating the two normalizations. & 1, 2, 8, 11 & \approved{} 2026-09-30 \\
+D111 & $\kappa_\mathrm{d}$: absorption coefficient of a Doppler-broadened line (L11 handwriting) reads as a fourth member of the family $\kappa_\mathrm{e}$, $\kappa_\mathrm{a}$, $\kappa_\mathrm{s}$ (extinction, absorption, scattering; L9, D81), though it is an absorption coefficient; L11 uses $\kappa_\mathrm{a}$ for the pressure-broadened line; subscript d also means dry in $a_\mathrm{d}$ (D90). Suggested: $\kappa_{\mathrm{a},\mathrm{D}}$ and $\kappa_{\mathrm{a},\mathrm{L}}$ (Doppler and Lorentz), or accept. Resolved: written $\kappa_{\mathrm{a},\mathrm{D}}$. & 9, 10, 11 & \resolved{} 2026-09-30 \\
+D112 & $\alpha_\mathrm{D}$, $\alpha$: Doppler width and line width parameter (L11; as in Liou, Eqs.~1.3.10, 1.3.18) vs.\ the attenuation constant $\alpha$ (L2, L4, L5, L9; $\kappa_\mathrm{a} = 2\alpha$ appears in the same topic) and $\alpha_{hh}$, $\alpha_{vv}$ (D71); D69 moved the wind angle off $\alpha$. Suggested: accept $\alpha$, $\alpha_\mathrm{D}$ (as in Liou; $w$, $w_\mathrm{D}$ are not advised: $w$ is the water subscript and reads like $\omega$). Approved: $\alpha$, $\alpha_\mathrm{D}$ kept. & 2, 4, 5, 9, 11 & \approved{} 2026-09-30 \\
+D113 & $k_0$: free-space wavenumber $\omega/c$ (L2; L11 in $\kappa_\mathrm{a} = 2k_0n''$) vs.\ the line-center wavenumber $\omega_0/c$ in the Doppler profile (L11, Eqs.~15--16), in the same lecture. Also, L11 uses $k = \omega/c$ (the free-space wavenumber of the radiation), whereas the master row defines $k = k_0\sqrt{\varepsilon'}$ (in a medium). Suggested: write $\omega_0/c$ explicitly in the Doppler profile, or $k_\mathrm{line}$. Resolved: line-center wavenumber written $k_\mathrm{line}$; $k_0$ stays the free-space wavenumber. & 2, 6, 9, 11 & \resolved{} 2026-09-30 \\
+D114 & $m_\mathrm{m}$: molecular mass (L11 handwriting) vs.\ particle mass $m$ (L1), $m_\ell$ (L4), $m_s$ (L7) and molar mass $M$ (L10). Suggested: accept, or $m_\mathrm{mol}$. Approved: $m_\mathrm{m}$ kept. & 1, 4, 7, 10, 11 & \approved{} 2026-09-30 \\
+D115 & $u_g$: group velocity (L11; handwritten $v_g$, written with $u$ following $u_p$, D15) vs.\ the lag $u$ (L7, D55); subscript $g$ vs.\ gravitational acceleration $g$ (L8, L10) and ground in $\sigma^0_{\mathrm{g},pq}$ (L9). Suggested: accept (as $u_p$). Approved: $u_g$ kept. & 7--11 & \approved{} 2026-09-30 \\
+D116 & $T_0$: reference temperature of the pressure-broadened damping coefficient, $\nu = \nu_0(P/P_0)(T_0/T)^\delta$ with $T_0 = 273$~K (L11, as in Liou, Eq.~1.3.14), vs.\ $T_0 = 288.15$~K, the sea-level standard temperature (L10), which L11 uses in the same derivation, $(1 - az/T_0)$; the two are conflated (effect on $\nu/\nu_0$ at 12~km: 1--3\%). Suggested: write the L11 reference temperature as $T_0 = 288.15$~K (with $\nu_0$ the damping coefficient at sea-level standard conditions), so the derivation is consistent; or keep 273~K and write it $T_\mathrm{ref}$ (not otherwise used; cf.\ $\nu_\mathrm{ref}$ in D108). Approved: $T_0 = 273$~K kept as handwritten in L11 (reference temperature), with a NOTE on the conflation with the L10 sea-level $T_0$. & 10, 11 & \approved{} 2026-09-30 \\
+D117 & (Formerly F3.) $\sigma$: Stefan--Boltzmann constant (L12, as in Liou, Eq.~1.2.9) vs.\ electrical conductivity $\sigma$ (L1, L2, L4, L5) and the radar cross section $\sigma$, $\sigma^0_{pq}$, $\hat{\sigma}^\mathrm{back}_{pq}$ (L7--L9, D45); the radar quantities return in the radiometry lectures. Suggested: $\sigma_\mathrm{SB}$ (no clash), or accept $\sigma$ (universal notation). Resolved: Stefan--Boltzmann constant written $\sigma_\mathrm{SB}$. & 1, 2, 4, 5, 7--9, 12 & \resolved{} 2026-09-30 \\
+D118 & $\alpha$: polarizability of a scattering particle (L12; as in Liou, Eq.~3.3.1) vs.\ the attenuation constant $\alpha$ (L2, L4, L5, L9), the SPM coefficients $\alpha_{hh}$, $\alpha_{vv}$ (D71) and the line width $\alpha$, $\alpha_\mathrm{D}$ (L11, D112). Suggested: $\alpha_\mathrm{pol}$ (no clash), or accept (standard notation). Resolved: polarizability written $\alpha_\mathrm{pol}$. & 2, 4--6, 8, 9, 11, 12 & \resolved{} 2026-09-30 \\
+D119 & $\phi$: scattering angle, between the incident and scattered directions (L12 handwriting) vs.\ the scattering azimuth $\phi_s$ (L7), the phase of $\eta$, $\phi_\eta$, and the string phases $\phi^i$, $\phi^r$, $\phi^t$ (D60), and $\phi_\mathrm{wind}$ (L8); the L7 scattering angle is $\theta_s$. Suggested: $\Theta$, as in Liou (Eq.~3.3.9; not otherwise used; $\Omega$ stays free for solid angle), or accept. Resolved: scattering angle written $\Theta$ (as in Liou). & 2, 4, 5, 7, 8, 12 & \resolved{} 2026-09-30 \\
+D120 & $\theta$, $\theta_1$, $\theta_2$: angle between the scattered dipole moment and the direction of observation, and its values $\theta_1 = \pi/2$ and $\theta_2 = \pi/2 - \phi$ for the $h$ and $v$ components (L12 handwriting; Liou: $\gamma$, $\gamma_1$, $\gamma_2$) vs.\ $\theta_1$, the common angle $\theta_i = \theta_r$ in medium 1 (L5, L6), $\tilde{\theta}_2$ (L6), and the incidence angles $\theta_i$, $\theta_r$, $\theta_t$. Liou's $\gamma$ is not advised (propagation constant, D9). Suggested: $\vartheta$, $\vartheta_h$, $\vartheta_v$ (not otherwise used), or accept. Approved: $\theta$, $\theta_1$, $\theta_2$ kept. & 5, 6, 12 & \approved{} 2026-09-30 \\
+D121 & $\mathbf{E}_s$, $\mathbf{E}_I$, $\mathbf{E}_R$: static, induction and radiation fields of an oscillating dipole (L12 handwriting) vs.\ the distance $R$ in the same expressions ($\mathbf{E}_R \sim R^{-1}$; range $R$, D53), the intensity $I$ of the same lecture, and the scattered/scatterer label $s$ (D56, D81). Suggested: accept, or upright descriptive subscripts $\mathbf{E}_\mathrm{stat}$, $\mathbf{E}_\mathrm{ind}$, $\mathbf{E}_\mathrm{rad}$ if D136 adopts $\mathbf{E}^s$ (which would otherwise sit next to $\mathbf{E}_s$ in the same lecture). Resolved: written $\mathbf{E}_\mathrm{stat}$, $\mathbf{E}_\mathrm{ind}$, $\mathbf{E}_\mathrm{rad}$ (with D136). & 7, 9, 12 & \resolved{} 2026-09-30 \\
+D122 & Subscript 0 in $I_0$, $I_{0h}$, $I_{0v}$ (incident intensity), $\mathbf{p}_0$ (dipole-moment amplitude) and $N_0$ (number of oscillators in the ground state) (L12; as in Liou), in addition to the meanings in D1, D82 and D88; D27 removed the ``amplitude'' meaning from $E_0^i$, and the handwritten incident field $\mathbf{E}_0$ was accordingly typeset $\mathbf{E}^i$. Suggested: $I^i$, $I^i_h$, $I^i_v$ (incident superscript, as $\mathbf{E}^i$); keep $\mathbf{p}_0$ (precedent: $\xi_0^i$, D22) and $N_0$; or accept all. Approved: $I_0$, $\mathbf{p}_0$, $N_0$ kept. & 1, 4, 9, 10, 12 & \approved{} 2026-09-30 \\
+D123 & $I$, $I_h$, $I_v$, $I_p$: intensity (power per unit area; L12, as in Liou) vs.\ the free current $I_f$ (L4); the course writes power per unit area as $\mathcal{S}$ (Poynting vector, D10). Suggested: accept $I$ (as in Liou; different lectures), or $\mathcal{S}$. Decide together with D134 (intensity terminology) and with L13 in mind: Liou's $I$ is a radiance, and Liou's $I$, $I_0$ on p.~89 are per solid angle. Approved: $I$ kept, defined in L12 as power per unit area; to be revisited in L13 (radiance). & 2, 4, 12 & \approved{} 2026-09-30 \\
+D124 & $r$: radius of a scattering particle (L12; as in Ulaby \& Long, Ch.~8) vs.\ the lag $r$ in $\mathcal{C}(r)$ (L7) and the position vector $\mathbf{r}$ (L5); the reflected label $r$ (D33). Liou's $a$ is not advised (lapse rate, D90). Suggested: accept $r$. Approved: $r$ kept. & 5, 7, 12 & \approved{} 2026-09-30 \\
+D125 & $N$, $N_0$, $N_\omega$: numbers of oscillators (L12; as in Liou, App.~A) vs.\ $N$, number density of dipoles (L1, L11), number of layers (L6, D43) and $N_\mathrm{v}$ (L9, D77). Suggested: accept (a count of oscillators, cf.\ D43), or $\mathcal{N}$, $\mathcal{N}_0$, $\mathcal{N}_\omega$. Approved: $N$, $N_0$, $N_\omega$ kept. & 1, 6, 9, 11, 12 & \approved{} 2026-09-30 \\
+D126 & $\mathcal{E}$ and $\mathcal{E}_\mathrm{ex}$ (L12): the handwritten $E$ is typeset $\mathcal{E}$ (D95, D100) but means both the energy of one Planck oscillator, $\hbar\omega(n_\mathrm{vib} + \frac12)$, and the total energy of the oscillators (L12, Eq.~20), extending $\mathcal{E}$ (internal energy of a molecule, L10--L11). The energy above the ground state is handwritten with a tilde-like accent ($\tilde{E}$, $\tilde{U}$; low-confidence reading); the tilde is reserved for complex counterparts (Conventions), so it is typeset $\mathcal{E}_\mathrm{ex}$. Suggested: $\mathcal{E}_\mathrm{tot}$ for the total energy; accept $\mathcal{E}_\mathrm{ex}$ (or $n_\mathrm{vib}\hbar\omega$ written out). Resolved: total energy of the oscillators written $\mathcal{E}_\mathrm{tot}$; $\mathcal{E}$ and $\mathcal{E}_\mathrm{ex}$ kept. & 10--12 & \resolved{} 2026-09-30 \\
+D127 & $u_f$: monochromatic energy density (L12; handwritten $u_\omega$, relabeled because it is per unit $f$; Liou: $u_{\tilde{\nu}}$) vs.\ the lag $u$ (L7, D55), phase velocity $u_p$ and group velocity $u_g$ (L2, L11). Suggested: accept (as in Liou), or $w_f$ (not advised: $w$ is the water subscript). Approved: $u_f$ kept. & 2, 4, 7, 8, 11, 12 & \approved{} 2026-09-30 \\
+D128 & $A = 8\pi f^2/c^3$: number of cavity modes per unit volume per unit frequency (L12; Liou App.~A) vs.\ the areas $A$, $A_i$, $A_0$, $A_\mathrm{eff}$ (L1, L5, L7, L9), the amplitudes $A_1$--$A_3$ (L6) and the wind-model coefficient $A$ (L8). Suggested: write $8\pi f^2/c^3$ explicitly (it appears in one equation), or accept. Approved: $A$ kept. & 1, 5--9, 12 & \approved{} 2026-09-30 \\
+D129 & $B_f$, $B_\lambda$: Planck function (spectral radiance) per unit frequency and wavelength (L12; as in Liou, $B_{\tilde{\nu}}$, $B_\lambda$) vs.\ the amplitudes $B_1$, $B_2$ (L6) and the coefficients $B^i$, $B^r$, $B^t$ (L5). Ulaby \& Long's $I_f$, $I_\lambda$ are not advised (intensity $I$, D123). Suggested: accept (always subscripted $f$ or $\lambda$). Approved: $B_f$, $B_\lambda$ kept. & 5, 6, 12 & \approved{} 2026-09-30 \\
+D130 & $b$ (constant in $L = bT^4$, L12, as in Liou, Eq.~1.2.7) and $b_W$ (Wien's displacement constant, L12) share a base letter in the same lecture, and $b$ is the wind-model coefficient (L8, D70); subscript $W$ vs.\ the roughness spectrum $W$ (L7) and the water subscript $w$. Suggested: write $b$ as $\sigma/\pi$ (or $\sigma_\mathrm{SB}/\pi$, D117) and $b_W$ as $b_\mathrm{Wien}$, or accept. Approved: $b$, $b_W$ kept. & 7, 8, 12 & \approved{} 2026-09-30 \\
+D131 & $L$: total radiance $\int_0^\infty B_\lambda\,d\lambda$ (L12 handwriting; Liou: $B(T)$) vs.\ the Lorenz number $L$ (L1) and the angular momentum $L$ (L11, D102); $\mathcal{L}$ (L6) differs only by font. Suggested: accept (different lectures), or $B$ (Liou), which D129 would extend. Approved: $L$ kept. & 1, 6, 11, 12 & \approved{} 2026-09-30 \\
+D132 & $z$: dimensionless integration variable $hc/(\lambda k_BT)$ in the Stefan--Boltzmann integral (L12 handwriting; Liou: $x$) vs.\ the coordinate $z$ and altitude $z$ (L2 on; L10--L11). Suggested: $\mathcal{Z}$ (script, not otherwise used), or accept (local to one integral). Approved: $z$ kept. & 2--12 & \approved{} 2026-09-30 \\
+D133 & Terminology: in the Rayleigh derivation (L12) $h$ and $v$ label the components perpendicular and parallel to the scattering plane (Liou: $r$, $l$), and ``horizontally polarized'' means perpendicular to that plane, whereas from L5 on $h$ and $v$ are defined relative to the plane of incidence on a horizontal surface (D31). Liou's $r$, $l$ are not advised ($r$ is reflected and radius; $\perp$, $\parallel$ mark interface components, L4). Suggested: accept, with the definition stated in L12 (it is, in a NOTE and the Variables table). Approved: accepted, with the definition stated. & 5, 7--9, 12 & \approved{} 2026-09-30 \\
+D134 & Terminology: ``intensity'' is power per unit area in L12 ($I$, the Rayleigh derivation, and $I = \pi L = \sigma T^4$, Liou's flux density $F$), while the ``total radiant intensity'' $L$ is a radiance (W\,m$^{-2}$\,sr$^{-1}$; Liou's $B(T)$, whom the handwriting follows); in SI radiometry, radiant intensity is W\,sr$^{-1}$. Suggested: call $L$ the ``total radiance'' and $I = \pi L$ the ``flux density'' (or exitance), or accept as in Liou. Approved: decided with D123. & 12 & \approved{} 2026-09-30 \\
+D135 & $c_1$, $c_2$: coefficients of the small-size Mie correction series (L12 handwriting) vs.\ the speed of light $c$ in the same equation ($(\omega/c)^4$), $c_\mathrm{add}$ (D79) and $c_p$ (D89). Suggested: $c_{\mathrm{M}1}$, $c_{\mathrm{M}2}$, or accept (numeric subscripts). Approved: $c_1$, $c_2$ kept. & 1, 9, 10, 12 & \approved{} 2026-09-30 \\
+D136 & Bold $\mathbf{E}$ in L12: defined as the total field (incident plus the dipole's field, page L1), but $\mathbf{E}$ in the far-field and scattered-field formulas (L12, Eqs.~2 and 4, handwritten ``total $\mathbf{E}$-field'') and $E_h$, $E_v$ are the field scattered by the dipole (Liou, p.~88). Suggested: $\mathbf{E}^s$, $E_h^s$, $E_v^s$ for the scattered field (superscript $s$ = scattered, as in $E_p^s$, L7; D56), keeping $\mathbf{E}$ for the total field; decide together with D121 (the static field $\mathbf{E}_s$ would then sit next to $\mathbf{E}^s$; D121 suggests $\mathbf{E}_\mathrm{stat}$ in that case); or accept with the NOTE in L12. Resolved: scattered field written $\mathbf{E}^s$, $E_h^s$, $E_v^s$ (as $E_p^s$ in L7), with D121. & 7, 12 & \resolved{} 2026-09-30 \\
+D137 & (Formerly F2.) $\tau$: optical depth, $d\tau = \kappa_\mathrm{e}\,dR$ (L13 handwriting; Ulaby \& Long, Eq.~6.54; Liou, Eq.~1.4.15) vs.\ the Fresnel transmission coefficient $\tau$, $\tau_h$, $\tau_v$, $\tau_{12}$, which D18 reserves, and the relaxation times $\tau_\mathrm{rel}$, $\tau_w$, $\tau_i$ (L1). (L9 wrote the canopy optical depth $\kappa_\mathrm{e}^pd\sec\theta_i$ out.) Typeset $\tau_\mathrm{opt}$ in L13 (the F2 suggestion; precedent $\gamma_\mathrm{st}$, D66). Suggested: accept $\tau_\mathrm{opt}$, or keep the handwritten bare $\tau$ as in both books (which would amend D18); $\delta$ is not advised (skin and penetration depth). Approved: $\tau_\mathrm{opt}$. & 1, 4--6, 13 & \approved{} 2026-09-30 \\
+D138 & $I$ in L13: the brightness (``intensity''), a radiance in W\,m$^{-2}$sr$^{-1}$ ($I(\theta,\phi)$, $I_\mathrm{bb}$, $I(\mathbf{r},\hat{\mathbf{R}})$, pages L7--L13, as in Ulaby \& Long, Table~6-1, and Liou's intensity), vs.\ the L12 intensity $I$, power per unit area (D123, D134), which L13 also uses on page L3 ($I = \pi L = \sigma_\mathrm{SB}T^4$, a flux density); also the free current $I_f$ (L4). The L13 handwriting gives the brightness units as W/m$^2$ (corrected to W\,m$^{-2}$sr$^{-1}$ in L13). Revisits D123/D134. Suggested: keep $I$ for the brightness (radiance), as in both books, and write the flux density (L12 and L13 page L3) as $\mathcal{S}$ (power, or flux, density; Ulaby \& Long, Table~6-1; D10); or accept both with the definitions stated. Approved: $I$ kept for both, with each definition stated (brightness, W m$^{-2}$ sr$^{-1}$; flux density, W/m$^2$, L12 and L13 Eq.~5). & 4, 12, 13 & \approved{} 2026-09-30 \\
+D139 & $z = hf/(k_BT)$: the variable of the Rayleigh--Jeans expansion (L13; handwritten $\gamma$, which D9 reserves for the propagation constant) is typeset $z$, the L12 symbol for the same quantity (D132), vs.\ the coordinate $z$, which labels the axes of both L13 sketches. Suggested: accept $z$ (as in L12), or write $hf/(k_BT)$ out; $x$ (Ulaby \& Long, Eq.~6.12) is not advised (coordinate $x$, same sketches). Approved: $z = hf/(k_BT)$. & 2, 12, 13 & \approved{} 2026-09-30 \\
+D140 & $c_p$: polarization factor of a radiometer antenna (L13 handwriting; 1 or $\tfrac12$) vs.\ the specific heat $c_p$ (L10, D89); the subscript $p$ also reads as the polarization index (D51). Suggested: write $\tfrac12$ explicitly for a polarized antenna (as Ulaby \& Long, Eq.~6.17), or $c_\mathrm{ant}$ (not otherwise used; $c_\mathrm{pol}$ is not advised: ``pol'' means polarizability in $\alpha_\mathrm{pol}$, D118). Approved: $c_p$ kept. & 7, 10, 13 & \approved{} 2026-09-30 \\
+D141 & $A_\mathrm{s}$, $\Omega_\mathrm{s}$ (source area and the solid angle it subtends) and $\Omega_\mathrm{r}$ (solid angle of the receiving antenna) (L13; as in Ulaby \& Long, Eqs.~6.7--6.10): subscript s means ``source'' vs.\ scattered/scatterer (D56, D81) and $A_{\mathrm{eff},s}$, the effective area of a scatterer (L7); subscript r means receiver, as accepted in D52. The handwritten antenna area $A_r$ is typeset $A_\mathrm{eff}$ (D52), so $\Omega_\mathrm{r} = A_\mathrm{eff}/R^2$ uses the effective area for a geometric solid angle, as Ulaby \& Long do with $A_r$. Suggested: accept, or $A_\mathrm{src}$, $\Omega_\mathrm{src}$ (not otherwise used). Approved: subscripts kept. & 7, 9, 13 & \approved{} 2026-09-30 \\
+D142 & $\Omega_\mathrm{p}$: antenna pattern solid angle (L13; as in Ulaby \& Long, Eq.~3.16) adds ``pattern'' to the meanings of subscript $p$ (D15: plasma, phase, penetration; D89, D94: pressure) and appears in the same equations as $c_p$ and the polarization discussion (D51). Suggested: accept (upright subscript, as in Ulaby \& Long), or $\Omega_\mathrm{pat}$ (not otherwise used). Approved: $\Omega_\mathrm{p}$ kept. & 1, 2, 7, 10, 13 & \approved{} 2026-09-30 \\
+D143 & $F(\theta,\phi)$: normalized radiation pattern of an antenna (L13; as in Ulaby \& Long, Eq.~3.16) vs.\ the forces $F_\mathrm{bond}$, $F_\mathrm{damping}$, $F_\mathrm{driving}$ (L1) and $F_\mathrm{tension}$ (L4); Liou's flux density is also $F$. Suggested: accept (always written with its arguments). Approved: $F(\theta,\phi)$ kept. & 1, 4, 13 & \approved{} 2026-09-30 \\
+D144 & $\theta$, $\phi$: colatitude and longitude of spherical coordinates (L13) vs.\ $\theta$, $\theta_1$, $\theta_2$, the dipole angles of L12 (D120), the incidence angles $\theta_i$, $\theta_r$, $\theta_t$ (L5--L9), and $\phi$ as the phases $\phi_\eta$, $\phi^i$ (D29, D60), the scattering azimuth $\phi_s$ (L7) and $\phi_\mathrm{wind}$ (L8). Suggested: accept (standard spherical coordinates, as in Ulaby \& Long and Liou). Approved: $\theta$, $\phi$ kept. & 2, 4, 5, 7, 8, 12, 13 & \approved{} 2026-09-30 \\
+D145 & $e(\theta,\phi)$: emissivity (L13; as in Ulaby \& Long, Eq.~6.26) vs.\ the elementary charge $e$ and the exponential base (D4), which appears in the same lecture ($e^{hf/k_BT}$, Planck's law), and the subscript e (extinction) of $\kappa_\mathrm{e}$ (D81), also in L13. $\varepsilon$ is not advised (dielectric constant). Suggested: accept (standard radiometric notation; written with its arguments or in $T_\mathrm{B} = eT$). Approved: $e$ kept. & 1, 9, 11, 13 & \approved{} 2026-09-30 \\
+D146 & $T_\mathrm{B}$, $T_\mathrm{VS}$: brightness temperature and volume scattered radiometric temperature (L13; handwritten $T_B$, $T_{VS}$; typeset with upright subscripts as in Ulaby \& Long) vs.\ $k_B$ (Boltzmann; in the same equations, $I = k_B\Delta f\,T_\mathrm{B}/\lambda^2$) and $\theta_B$ (Brewster; D36); V and S read like the $v$ polarization (D31) and the scattered label s (D56). $T$ remains temperature (D19). Suggested: accept (Ulaby \& Long's convention: radiometric temperatures carry uppercase subscripts). Approved: $T_\mathrm{B}$, $T_\mathrm{VS}$ kept. & 1, 5, 7, 13 & \approved{} 2026-09-30 \\
+D147 & $\hat{\mathbf{R}}$, $\hat{\mathbf{R}}'$: direction of propagation and direction of the radiation scattered into it (L13; as in Ulaby \& Long, Fig.~6-12) vs.\ the propagation unit vector $\hat{\mathbf{k}}$ (L2 on; same quantity) and the range $R$ (L7, L9, L12), which in L13 is both the source--antenna distance and, as $dR$, the path length; the prime also marks real parts and local angles (D57). Suggested: accept (as in Ulaby \& Long; $\hat{\mathbf{R}}$ pairs with $dR$), or $\hat{\mathbf{k}}$, $\hat{\mathbf{k}}'$. Approved: $\hat{\mathbf{R}}$, $\hat{\mathbf{R}}'$ kept. & 2, 7, 9, 12, 13 & \approved{} 2026-09-30 \\
+D148 & $a$: single-scattering albedo $\kappa_\mathrm{s}/\kappa_\mathrm{e}$ (L13; as in Ulaby \& Long, Eq.~6.50) vs.\ the lapse rate $a$ (L10, D90) and the wind-model coefficient $a$ (L8, D70); in L13 it also sits next to the subscript a (absorption) of $\kappa_\mathrm{a}$ and $J_\mathrm{a}$ in the same equation, $J = (1-a)J_\mathrm{a} + aJ_\mathrm{s}$; Ulaby \& Long also use $a$ for absorptivity (Table~6-1). Liou's $\tilde{\omega}$ is not advised (tilde marks complex counterparts; $\omega$ is angular frequency). Suggested: $\varpi$ (not otherwise used), or accept. Approved: $a$ kept (as in Ulaby \& Long). & 8, 10, 13 & \approved{} 2026-09-30 \\
+D149 & $J$, $J_\mathrm{a}$, $J_\mathrm{s}$: total, absorption and scattering source functions (L13; as in Ulaby \& Long, Eqs.~6.47--6.52, and Liou, Eq.~1.4.4) vs.\ the rotational quantum number $J$ (L10, L11; D98). Suggested: accept (standard notation; different lectures), or script $\mathcal{J}$ (not otherwise used). Approved: $J$, $J_\mathrm{a}$, $J_\mathrm{s}$ kept. & 10, 11, 13 & \approved{} 2026-09-30 \\
+D150 & $\tau_\mathrm{eff}$, $\tau_p$: effective pulse length ($=1/B$; handwritten bare $\tau$, typeset $\tau_\mathrm{eff}$ because D18 reserves bare $\tau$ for the Fresnel transmission coefficient; precedent $\tau_\mathrm{opt}$, D137) and true pulse duration (handwritten $\tau_p$) (L14; van Zyl: $\tau$, $\tau_p$) vs.\ $\tau$, $\tau_h$, $\tau_v$ (L4--L6), $\tau_\mathrm{rel}$, $\tau_w$, $\tau_i$ (L1) and $\tau_\mathrm{opt}$ (L13); subscript $p$ (pulse) adds to D15, D89, D94, D142 and reads as the polarization index (D51); eff as in $A_\mathrm{eff}$. Suggested: accept $\tau_\mathrm{eff}$, $\tau_p$ (subscripted, as D18 requires), or $\tau_\mathrm{pulse}$ for the true duration (not otherwise used). Approved: $\tau_\mathrm{eff}$, $\tau_p$. & 1, 4--6, 13, 14 & \approved{} 2026-09-30 \\
+D151 & $B$, $B_\mathrm{D}$: pulse (chirp) bandwidth and Doppler bandwidth (L14; as in van Zyl, Eqs.~1.2-5, 1.5-6) vs.\ the amplitudes $B_1$, $B_2$ (L6), the coefficients $B^i$, $B^r$, $B^t$ (L5; D129) and the Planck functions $B_f$, $B_\lambda$ (L12, L13); L13 writes the receiver bandwidth $\Delta f$ (Ulaby \& Long: $B$). Within L14, $\Delta f$ is the instrument (noise) bandwidth on page L7 but the frequency excursion of the chirp on page L8 ($B = |(f + \Delta f) - f| = |\Delta f|$). Subscript D (Doppler) as in $\kappa_{\mathrm{a},\mathrm{D}}$ (D111). Suggested: accept $B$, $B_\mathrm{D}$, and write the chirp's excursion on page L8 without $\Delta f$ (e.g., $B = |f(\tau_p/2) - f(-\tau_p/2)|$), so that $\Delta f$ remains the instrument bandwidth; or $\Delta f_\mathrm{p}$, $\Delta f_\mathrm{D}$ for the two bandwidths. Approved: $B$, $B_D$ kept; the two uses of $\Delta f$ explained in a NOTE. & 5, 6, 12--14 & \approved{} 2026-09-30 \\
+D152 & Subscript 0 in $f_0$, $\omega_0$ (carrier frequency of a chirp), $R_0$ (range at closest approach) and $A_0$ (amplitude of the transmitted signal) (L14; $f_0$, $R_0$ as in van Zyl), in addition to the meanings in D1 (free space, static, natural/resonant; $\omega_0$ is also the L1 natural frequency and the L11 line center), D82 (beam area $A_0$), D88 (sea level) and D122 (incident, amplitude, ground state). $A_0$ is letter for letter the L9 beam area $A_0$ (D82), and D27 removed the ``amplitude'' meaning from $E_0^i$. Suggested: accept $f_0$, $\omega_0$, $R_0$ and $A_0$ (as in van Zyl and the handwriting); dropping the handwritten $A_0$ is not advised. Approved: $f_0$, $\omega_0$, $R_0$, $A_0$ kept. & 1, 4, 9--12, 14 & \approved{} 2026-09-30 \\
+D153 & $A(t)$, $V_r(t)$, $V_\mathrm{o}(t)$: transmitted (chirp) signal, received signal and compressed (matched-filter output) signal (L14; as in van Zyl, who writes $V_o$) vs.\ the areas $A$, $A_i$, $A_0$, $A_\mathrm{eff}$ (L1, L5, L7, L9), the amplitudes $A_1$--$A_3$ (L6), the wind-model coefficient $A$ (L8) and the mode density $A$ (L12, D128); and $V_r$, $V_\mathrm{o}$ vs.\ the potential difference $V$ (L1) and the platform velocity $v$ (same lecture, D161). Also a convention issue: $A(t)$ is real on page L8 (Eq.~11) but complex on page L9 (Eq.~12), and $A$, $V_r$, $V_\mathrm{o}$ are complex-valued time-domain signals written without a tilde (Conventions: time-domain quantities carry no tilde). Suggested: write the transmitted signal $V_t(t)$ (not otherwise used; parallel to $V_r$, $V_\mathrm{o}$; subscript $t$ = transmit, D52), and accept the complex (analytic) signals without a tilde, with a sentence in L14 stating that the physical signal is the real part; or accept $A(t)$ as in van Zyl. Approved: $A(t)$, $V_r$, $V_o$ kept, with a line in L14 stating that the physical signal is the real part. & 1, 5--9, 12, 14 & \approved{} 2026-09-30 \\
+D154 & $E_r$: field received by the radar from a point scatterer (L14 page L9; as in van Zyl, Eq.~1.2-9) vs.\ the reflected amplitude $E^r$ and $E_h^r$ (L4, L5), with subscript $r$ = receive (D52). Suggested: $E_p^s$ (the scattered field at the receiver, L7), or accept. Approved: $E_r$ kept. & 4, 5, 7, 14 & \approved{} 2026-09-30 \\
+D155 & $\xi$: integration variable (time) in the matched filter (L14 page L9; handwritten glyph read as $\xi$, low confidence, possibly $\zeta$) vs.\ the displacement $\xi$ (L1, L4) and the surface height $\xi(x,y)$ (L7); $\zeta$ is the L8 anti-plane tilt (D72). Suggested: $t'$ (a second time; prime as for the second surface point $(x',y')$, D57). Approved: $\xi$ kept (local integration variable). & 1, 4, 7, 8, 14 & \approved{} 2026-09-30 \\
+D156 & $\theta_r$, $\theta_a$: beamwidths of a radar antenna in range and azimuth (L14; as in van Zyl, Eqs.~1.4-1, 1.4-3). $\theta_r$ is letter for letter the angle of reflection $\theta_r$ (L5, $\theta_r = \theta_i$), and the incidence angle $\theta_i$ appears in the same lecture; subscript $a$ (azimuth) vs.\ absorption ($\kappa_\mathrm{a}$, $f_a$, $J_\mathrm{a}$). Suggested: $\theta_\mathrm{rg}$, $\theta_\mathrm{az}$ (not otherwise used), or accept. Approved: $\theta_r$, $\theta_a$ kept (as in van Zyl). & 5, 7, 9, 13, 14 & \approved{} 2026-09-30 \\
+D157 & $S_r$, $S_a$ (extents of the radar footprint) and $X_r$, $X_g$, $X_a$, $X_a^\mathrm{RAR}$, $X_a^\mathrm{SAR}$ (slant-range, ground-range and azimuth resolutions) (L14; van Zyl: $S$, $x_r$, $x_g$, $x_a$): $S_r$ sits next to $\mathcal{S}_r$, the power density at the receiver (L7), and $S$ is also salinity (L1), line strength (L11, D110) and $S_{pq}$ (L8); subscript $r$ (range) vs.\ receive in $P_r$ (same lecture, page L7) and reflected (L4, L5); $a$ (azimuth) vs.\ absorption; $g$ (ground) vs.\ gravity $g$ (L8, L10; ground in $\sigma^0_{\mathrm{g},pq}$, L9, is the same meaning); $X$ is the table's placeholder for the numeric subscripts $X_1$--$X_3$. Suggested: accept (as in van Zyl), or upright subscripts $S_\mathrm{rg}$, $S_\mathrm{az}$, $X_\mathrm{sr}$ (slant range), $X_\mathrm{gr}$, $X_\mathrm{az}$ (not otherwise used; with D156; $X_\mathrm{rg}$ vs.\ $X_\mathrm{gr}$ would differ only in letter order). Approved: $S_r$, $S_a$, $X_r$, $X_g$, $X_a$ kept (as in van Zyl). & 1, 4, 5, 7--11, 14 & \approved{} 2026-09-30 \\
+D158 & $W$, $L$: width and length of a radar antenna (L14; as in van Zyl) vs.\ the roughness spectrum $W$ (L7, L8), and vs.\ the Lorenz number $L$ (L1), the angular momentum $L$ (L11, D102), the total radiance $L$ (L12, D131) and $\mathcal{L}$ (L6); ``L-band'' also appears in L14. Suggested: $W_\mathrm{ant}$, $L_\mathrm{ant}$ (following $d_\mathrm{ant}$, D62; not otherwise used), or accept. Approved: $W$, $L$ kept. & 1, 6--8, 11, 12, 14 & \approved{} 2026-09-30 \\
+D159 & $h$: altitude of a radar above the surface (L14; as in van Zyl) vs.\ the Planck constant $h$ (L10--L13, D97; L14 page L7 recalls Planck's law), the rms height $h$ (L7--L9, D47), the plate separation $h$ (L1) and the $h$-polarization subscript (D31). Suggested: $h_\mathrm{alt}$ (not otherwise used), or accept. Approved: $h$ kept. & 1, 5, 7--14 & \approved{} 2026-09-30 \\
+D160 & $\theta$: look angle of a radar (L14 page L4; as in van Zyl) vs.\ the colatitude $\theta$ (L13, D144) and the dipole angle $\theta$ (L12, D120). The handwriting also uses $\theta$ for the incidence angle on pages L5--L6 (typeset $\theta_i$, the master symbol), and the two are equal only when the curvature of the Earth is neglected and the surface has no topography (page L5; van Zyl, p.~5). Suggested: $\theta_\mathrm{look}$ (not otherwise used), or accept. Approved: $\theta$ kept. & 5, 12--14 & \approved{} 2026-09-30 \\
+D161 & $v$, $s$, $s_\mathrm{tot}$: platform velocity, slow time and time in the beam (L14; as in van Zyl; the handwritten velocity is $V$ or $v$, case unclear) vs.\ the lag $v$ (L7, D55), the $v$-polarization subscript (D31) and $V_r$, $V_\mathrm{o}$ (same lecture, D153); $s$ vs.\ the scattered/scatterer, source and scattering labels s (D56, D81, D141). Suggested: accept (as in van Zyl), or $v_\mathrm{plat}$ for the platform velocity. Approved: $v$, $s$, $s_\mathrm{tot}$ kept. & 5, 7, 9, 13, 14 & \approved{} 2026-09-30 \\
+D162 & $P_\mathrm{N}$: thermal noise power (L14; handwritten $P_N$; as in van Zyl, Eq.~1.3-1): subscript N (noise) vs.\ the number densities and counts $N$ (L1, L6, L11, L12) and $N_\mathrm{v}$ (L9). Suggested: accept, or $P_\mathrm{noise}$. Approved: $P_N$ kept. & 1, 6, 9, 11, 12, 14 & \approved{} 2026-09-30 \\
+D163 & Wavenumber convention (instructor decision): $k$, often with a subscript indicating the medium, is the wavenumber in a medium, $\omega/u_p = k_0n'$; $k_0 = \omega/c$ is the free-space wavenumber. L11: $k$ in $u_g = \partial\omega/\partial k$ is the in-medium wavenumber (with $k = \omega/c$ the definition gave $u_g \equiv c$); the Doppler profile uses $k_0$. L12: $k$ in the Rayleigh formulas is the wavenumber in the surrounding air ($\approx k_0$). & 2, 11, 12 & \resolved{} 2026-09-30 \\
+D164 & Planck constant $h$ (L12, L13) vs.\ the polarization subscript $h$ (horizontal; e.g., $I_h$, $E^s_h$, $\rho_h$), which appear on the same page in L12. Approved (instructor decision): dual use kept; one is a constant, the other a subscript. & 5--13 & \approved{} 2026-09-30 \\
+\hline
+\end{longtable}
+
+\subsection*{Anticipated in later lectures}
+These conflicts come from standard notation in Ulaby \& Long (2014) and Liou. They should be resolved or approved when each topic is converted. F1 and F9 now occur in Lecture 2 and have moved to D9 and D10; F10 and F5 now occur in Lecture 5 and have moved to D29 and D30. F7 was resolved by the instructor (2026-09-29). The transmission-coefficient part of F2 now occurs in Lecture 4 and has moved to D18; the optical-depth part now occurs in Lecture 13 and has moved to D137, so F2 is no longer listed. The radar-cross-section part of F3 now occurs in Lecture 7 and has moved to D45. F4 now occurs in Lecture 10 (Planck constant, in $\hbar = h/2\pi$) and has moved to D97. F8 now occurs in Lecture 11 (photon energy, $\Delta E = \hbar\omega$) and has moved to D100. The Stefan--Boltzmann part of F3 now occurs in Lecture 12 and has moved to D117, so F3 is no longer listed.
+\begin{longtable}{l >{\raggedright\arraybackslash}p{0.52\textwidth} l l}
+\hline
+ID & Potential conflict & Where & Status \\
+\hline
+\endhead
+F6 & $\mu$: permeability (L1) vs.\ $\mu = \cos\theta$ in radiative transfer (Liou). Not triggered in L10--14. & later? & \pending \\
+F7 & $\rho$ is reserved for Fresnel reflection coefficients ($\rho$, $\rho_h$, $\rho_v$, as in Ulaby \& Long Ch.~2); volume charge density was renamed from $\rho_v$ to $q_v$ (instructor decision). & L1--2, 4--5 & \resolved{} 2026-09-29 \\
+F11 & $g$: gravitational acceleration (L8) vs.\ the asymmetry factor $g$ of the scattering phase function (Liou, Ch.~3--6, 8). Not triggered in L10--14. & later? & \pending \\
+\hline
+\end{longtable}
+
+\end{document}
