@@ -327,12 +327,34 @@ Here we approximate the response of materials to oscillating fields using classi
 		\label{e:displacement}
 		\tilde{\xi} = \frac{(q/m)\tilde{E}}{\omega_0^2 - \omega^2 + j\omega\nu}.
 	\end{equation}
-	\item Let us define the (complex amplitude of the) dipole moment $\tilde{p} = q\tilde{\xi}$ and the polarization per unit volume
+	% NOTE: the explanations of the dipole moment, the polarization, and Eq. (e:PE), and the display of Eq. (e:PE), were added
+	% at the instructor's request (2026-10-01). The handwriting defines p~ = q xi~ and P~ = N p~ = N q xi~ and states
+	% "In all cases encountered in RS, we have P~ = eps_0 (eps - 1) E~" inline.
+	\item Each displaced charge $q$, together with the equal and opposite charge it is bound to (the nucleus for an electron cloud, a neighboring ion in a crystal, the other end of a polar molecule), forms an electric dipole. A dipole is characterized by its dipole moment: the charge times the separation of the two charges, pointing from the negative to the positive charge. Displacing the charge by $\xi$ from its equilibrium position therefore creates (or, for a permanent dipole such as H$_2$O, changes) a dipole moment $p = q\xi$ (units C$\cdot$m). Let us define the (complex amplitude of the) dipole moment $\tilde{p} = q\tilde{\xi}$.
+	\item A single dipole is far too small to matter on its own; what the EM wave ``sees'' is the combined effect of all the dipoles in a volume. If there are $N$ dipoles per unit volume, all driven by the same field, their moments add, and the dipole moment per unit volume, or polarization per unit volume, is
 	\begin{equation}
+		\label{e:P}
 		\tilde{P} = N\tilde{p} = Nq\tilde{\xi},
 	\end{equation}
 	where $N$ is the number of dipoles per unit volume.
-	\item In all cases encountered in RS, we have $\tilde{P} = \varepsilon_0(\varepsilon - 1)\tilde{E}$. From Eq.~\eqref{e:displacement}, we can then solve for the dielectric constant as
+	\begin{itemize}
+		% NOTE (added): bound surface charge density = P . n-hat; with P along E (from the + plate toward the - plate), the face
+		% next to the + plate carries -P and the face next to the - plate carries +P.
+		\item $P$ has units of C/m$^2$, those of a surface charge density, and that is a useful way to picture it. In our capacitor example (Figure~\ref{f:water}b), the aligned dipoles leave a layer of bound charge on each face of the dielectric, $-P$ against the positive plate and $+P$ against the negative plate. This bound charge partly cancels the free charge $\pm Q/A$ on the plates, which is why the net field is reduced.
+	\end{itemize}
+	\item In all cases encountered in RS, the polarization is proportional to the field, and we write
+	\begin{equation}
+		\label{e:PE}
+		\tilde{P} = \varepsilon_0(\varepsilon - 1)\tilde{E}.
+	\end{equation}
+	Why should $\tilde{P}$ be related to $\tilde{E}$ in this way?
+	\begin{itemize}
+		\item Proportionality: Eq.~\eqref{e:displacement} shows that $\tilde{\xi} \propto \tilde{E}$, so $\tilde{p}$ and $\tilde{P}$ are also proportional to $\tilde{E}$. The response is linear because the fields of EM waves in RS are tiny compared with the fields that bind charges in atoms and molecules, so the ``springs'' are only gently stretched.
+		\item The factor $\varepsilon_0(\varepsilon - 1)$ is chosen so that the material can be described by $\varepsilon$ alone. In the (static) capacitor, the free charge per unit area on a plate must account for both the field and the bound charge: $Q/A = \varepsilon_0E + P = \varepsilon_0\varepsilon E$ (with real $\varepsilon$ in the static case). A dielectric therefore acts like a vacuum with $\varepsilon_0$ replaced by $\varepsilon_0\varepsilon$; repeating the steps leading to Eq.~\eqref{e:capacitance} gives $C = A\varepsilon_0\varepsilon/h$, confirming our earlier guess that $C \propto \varepsilon'\varepsilon_0$.
+		\item In a vacuum there are no dipoles ($N = 0$), so $\tilde{P} = 0$ and $\varepsilon = 1$, as it must be.
+		\item Why phasors? The dipoles do not respond instantaneously: damping makes the displacement, and hence the polarization, lag behind the field. A real constant of proportionality between $P(t)$ and $E(t)$ cannot describe a lag, but a complex constant multiplying the phasor can: $P(t) = \mathrm{Re}\left[\varepsilon_0(\varepsilon - 1)\tilde{E}e^{j\omega t}\right]$, and the phase angle of $\varepsilon - 1 = (\varepsilon' - 1) - j\varepsilon''$ is the phase lag of $P(t)$ behind $E(t)$. The part of $P$ in phase with $E$ stores energy (set by $\varepsilon'$), and the part $90^\circ$ out of phase dissipates energy (set by $\varepsilon''$). This is why Eq.~\eqref{e:PE} is written for the phasors rather than for the time-domain fields.
+	\end{itemize}
+	\item Combining Eqs.~\eqref{e:P}, \eqref{e:PE}, and \eqref{e:displacement}, we can then solve for the dielectric constant as
 	\begin{equation}
 		\label{e:oscillator}
 		\boxed{\varepsilon(\omega) = 1 + \frac{\omega_p^2}{\omega_0^2 - \omega^2 + j\omega\nu}}
