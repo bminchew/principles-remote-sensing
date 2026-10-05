@@ -26,6 +26,7 @@ lectures/princRS_lecture00b.pptx
 
 # Markdown (audit reports, handoff notes)
 *.md
+!README.md
 *.claude/
 
 # Mac
