@@ -30,10 +30,10 @@ The course introduces the physics of remote sensing, with applications to Earth,
 | 8 | Scattering from the ocean and other surfaces with small-scale roughness | [PDF](lectures/latex_notes/lecture08/notes_lecture08.pdf) |
 | 9 | Volume scattering | [PDF](lectures/latex_notes/lecture09/notes_lecture09.pdf) |
 | 10 | Interaction of EM radiation with atmospheres | [PDF](lectures/latex_notes/lecture10/notes_lecture10.pdf) |
-| 11 | Atmospheric absorption and emission, Part 2 | [PDF](lectures/latex_notes/lecture11/notes_lecture11.pdf) |
+| 11 | Atmospheric absorption and emission | [PDF](lectures/latex_notes/lecture11/notes_lecture11.pdf) |
 | 12 | Atmospheric scattering and black body radiation (or why is the sky blue?) | [PDF](lectures/latex_notes/lecture12/notes_lecture12.pdf) |
 | 13 | Radiometry and radiative transfer | [PDF](lectures/latex_notes/lecture13/notes_lecture13.pdf) |
-| 14 | Synthetic aperture radar, Part 1 | [PDF](lectures/latex_notes/lecture14/notes_lecture14.pdf) |
+| 14 | Synthetic aperture radar | [PDF](lectures/latex_notes/lecture14/notes_lecture14.pdf) |
 
 The typeset notes follow the handwritten notes closely. Where they add to or correct the handwriting, the `.tex` source says so in a `% NOTE` comment, with the reason and the reference used. Notation is consistent across lectures; when a symbol means different things in different places, the master table records it.
 
