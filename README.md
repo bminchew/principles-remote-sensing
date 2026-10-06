@@ -24,8 +24,8 @@ The course introduces the physics of remote sensing, with applications to Earth,
 | 2 | Maxwell's equations and EM wave propagation | [PDF](lectures/latex_notes/lecture02/notes_lecture02.pdf) |
 | 3 | *(no written notes)* | — |
 | 4 | EM wave transmission and reflection at planar interfaces, Part 1: normal incidence | [PDF](lectures/latex_notes/lecture04/notes_lecture04.pdf) |
-| 5 | Reflection and transmission of EM waves at oblique incidence | [PDF](lectures/latex_notes/lecture05/notes_lecture05.pdf) |
-| 6 | Reflection and transmission at oblique incidence and multiple layers | [PDF](lectures/latex_notes/lecture06/notes_lecture06.pdf) |
+| 5 | EM wave transmission and reflection at planar interfaces, Part 2: oblique incidence | [PDF](lectures/latex_notes/lecture05/notes_lecture05.pdf) |
+| 6 | EM wave transmission and reflection at planar interfaces, Part 3: oblique incidence and multiple layers | [PDF](lectures/latex_notes/lecture06/notes_lecture06.pdf) |
 | 7 | Scattering from nonplanar surfaces | [PDF](lectures/latex_notes/lecture07/notes_lecture07.pdf) |
 | 8 | Scattering from the ocean and other surfaces with small-scale roughness | [PDF](lectures/latex_notes/lecture08/notes_lecture08.pdf) |
 | 9 | Volume scattering | [PDF](lectures/latex_notes/lecture09/notes_lecture09.pdf) |
