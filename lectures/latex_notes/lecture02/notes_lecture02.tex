@@ -294,7 +294,9 @@ Now let's connect these ideas.
 	\begin{equation}
 		\tilde{\mathbf{E}} = \tilde{E}_x\hat{\mathbf{x}} + \tilde{E}_y\hat{\mathbf{y}} + \tilde{E}_z\hat{\mathbf{z}}.
 	\end{equation}
-	\item Substituting the phasor form into the wave equation, Eq.~\eqref{e:wave_free}, with $\partial/\partial t \rightarrow j\omega$, gives
+	% NOTE: the sentence on separating the vector equation into components was added at the instructor's request
+	% (2026-10-08).
+	\item Substituting the phasor form into the wave equation, Eq.~\eqref{e:wave_free}, with $\partial/\partial t \rightarrow j\omega$, gives $\nabla^2\tilde{\mathbf{E}} + k_0^2\tilde{\mathbf{E}} = 0$. Because the Cartesian unit vectors $\hat{\mathbf{x}}$, $\hat{\mathbf{y}}$, $\hat{\mathbf{z}}$ do not vary in space, $\nabla^2\tilde{\mathbf{E}} = (\nabla^2\tilde{E}_x)\hat{\mathbf{x}} + (\nabla^2\tilde{E}_y)\hat{\mathbf{y}} + (\nabla^2\tilde{E}_z)\hat{\mathbf{z}}$, so this vector equation separates into three identical scalar equations, one for each component. For $\tilde{E}_x$,
 	\begin{equation}
 		\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} + k_0^2\right)\tilde{E}_x = 0,
 	\end{equation}
@@ -310,6 +312,7 @@ Now let's connect these ideas.
 	\item A uniform plane wave has no field component along its direction of propagation ($\tilde{E}_z = 0$), and we hereafter define our coordinate system such that $\tilde{E}_y = 0$.
 	\item Because we are considering a uniform plane wave propagating along $\hat{\mathbf{z}}$, we have $\partial^2 \tilde{E}_x/\partial x^2 = \partial^2 \tilde{E}_x/\partial y^2 = 0$, so the wave equation gives
 	\begin{equation}
+		\label{e:helm_z}
 		\frac{\partial^2 \tilde{E}_x}{\partial z^2} + k_0^2 \tilde{E}_x = 0,
 	\end{equation}
 	% NOTE: handwritten calls this "the general solution"; the general solution also contains a -z-going term
@@ -320,6 +323,9 @@ Now let's connect these ideas.
 		\qquad \text{or} \qquad
 		\tilde{\mathbf{E}}(z) = E_x^+\,e^{-jk_0z}\,\hat{\mathbf{x}}.
 	\end{equation}
+	% NOTE: the explanation of the superscript + was added at the instructor's request (2026-10-08); the two-term general
+	% solution is U&L 2014, Eq. 2.22.
+	The superscript $+$ labels the wave traveling in the $+\hat{\mathbf{z}}$ direction, and $E_x^+$ is its (constant, complex) amplitude at $z = 0$. Eq.~\eqref{e:helm_z} is second order, so its general solution has two terms, $\tilde{E}_x(z) = E_x^+e^{-jk_0z} + E_x^-e^{+jk_0z}$. To see which way each travels, write $E_x^+ = |E_x^+|e^{j\phi^+}$ and return to the time domain: $E_x(z,t) = \mathrm{Re}[E_x^+e^{-jk_0z}e^{j\omega t}] = |E_x^+|\cos(\omega t - k_0z + \phi^+)$. A point of constant phase, $\omega t - k_0z = \text{const}$, moves toward $+z$ as $t$ increases, at speed $\omega/k_0 = c$. Likewise, the $E_x^-$ term moves toward $-z$. Here we consider only the wave traveling along $+\hat{\mathbf{z}}$; we will need both terms when we study reflection at interfaces (Lecture 4).
 	\item We can then solve for the corresponding magnetic field by plugging into Faraday's law:
 	\begin{equation}
 		\tilde{\mathbf{H}}(z) = \frac{1}{\eta_0}E_x^+\,e^{-jk_0z}\,\hat{\mathbf{y}},
@@ -597,6 +603,8 @@ E_x,\ \tilde{E}_x & $x$-component of $\mathbf{E}$ and of its phasor & V/m & -- \
 E_y,\ \tilde{E}_y & $y$-component of $\mathbf{E}$ and of its phasor & V/m & $0$ (chosen) \\
 E_z,\ \tilde{E}_z & $z$-component of $\mathbf{E}$ and of its phasor & V/m & $0$ (plane wave along $\hat{\mathbf{z}}$) \\
 E_x^+ & complex amplitude of the $+z$-propagating $\tilde{E}_x$ at $z = 0$ & V/m & -- \\
+E_x^- & complex amplitude of the $-z$-propagating $\tilde{E}_x$ at $z = 0$ & V/m & -- \\
+\phi^+ & phase of $E_x^+$, $E_x^+ = |E_x^+|e^{j\phi^+}$ & rad & -- \\
 \mathbf{H} & magnetic field intensity vector (instantaneous) & A/m & -- \\
 \tilde{\mathbf{H}} & phasor of $\mathbf{H}$ & A/m & -- \\
 x & Cartesian coordinate & m & -- \\
