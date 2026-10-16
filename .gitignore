@@ -10,6 +10,11 @@ letters4visitors/
 project/
 psets/
 
+# Pset solutions: never push (students can see the repo), even if psets/ is un-ignored
+**/solutions/
+**/ulaby_solutions/
+*solutions*
+
 # Files over GitHub's 100 MB limit (~870 MB each)
 lectures/princRS_lecture00b.key
 lectures/princRS_lecture00b.pptx
