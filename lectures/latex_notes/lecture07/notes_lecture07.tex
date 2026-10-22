@@ -542,9 +542,9 @@ See Figure~\ref{f:undulating}.
 		% repeat label
 		\node[align=left] at (5.6,1.9) {repeat over entire\\illuminated surface};
 		\draw[->] (4.7,2.6) to[out=20,in=180] (5.9,2.8) to[out=0,in=160] (6.6,2.65);
-		% scale bar
-		\draw[|-|] (2.5,-3.2) -- (14.8,-3.2);
-		\node[fill=white] at (8.65,-3.2) {$\Lambda \gg \lambda$};
+		% scale bar: one surface wavelength, peak to peak (peaks of the surface at x = 3.75 and 14.75)
+		\draw[|-|] (3.75,-3.2) -- (14.75,-3.2);
+		\node[fill=white] at (9.25,-3.2) {$\Lambda \gg \lambda$};
 	\end{tikzpicture}
 	\caption{Kirchhoff (physical optics) approximation: at each point of a gently undulating surface, the incident wave is reflected and transmitted as at the infinite plane tangent to the surface, with local angles $\theta_i'$ and $\theta_t'$ measured from the local normal $\hat{\mathbf{a}}$. H polarization is shown.}
 	\label{f:undulating}
