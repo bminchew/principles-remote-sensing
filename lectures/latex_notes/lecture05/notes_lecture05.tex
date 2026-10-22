@@ -431,6 +431,19 @@ Now we need to get organized by defining polarizations.
 \end{figure}
 % NOTE: the last caption sentence and the meaning of the circle symbols are added clarifications.
 
+% NOTE: the following explanation of the reference directions in Figure f:pol is added (instructor request). Checked
+% by hand with H = k x E / eta at theta_i = 0 and against the sign of rho_v in Eq. (e:rho_v).
+\begin{itemize}
+	\item Why does $\mathbf{H}_v$ flip on reflection in Figure~\ref{f:pol}b? The fields and the propagation direction always form a right-handed set, with $\mathbf{E}\times\mathbf{H}$ along $\hat{\mathbf{k}}$. The reflected wave travels upward ($\hat{\mathbf{k}}_r$ has a $+\hat{\mathbf{z}}$ component), while the incident wave travels downward, so when $\hat{\mathbf{k}}$ reverses, either $\mathbf{E}$ or $\mathbf{H}$ must reverse too. The reflected $\mathbf{E}_v^r$ reference is chosen to match $\mathbf{E}_v^i$ at normal incidence, so $\mathbf{H}_v^r$ is the one that flips. At $\theta_i = 0$, with $\mathbf{H} = \hat{\mathbf{k}}\times\mathbf{E}/\eta$:
+	\begin{itemize}
+		\item incident: $\hat{\mathbf{k}}_i = -\hat{\mathbf{z}}$ and $\mathbf{E}_v^i \parallel -\hat{\mathbf{x}}$, so $\mathbf{H}_v^i \parallel (-\hat{\mathbf{z}})\times(-\hat{\mathbf{x}}) = +\hat{\mathbf{y}}$ ($\otimes$);
+		\item reflected: $\hat{\mathbf{k}}_r = +\hat{\mathbf{z}}$ and $\mathbf{E}_v^r \parallel -\hat{\mathbf{x}}$, so $\mathbf{H}_v^r \parallel (+\hat{\mathbf{z}})\times(-\hat{\mathbf{x}}) = -\hat{\mathbf{y}}$ ($\odot$);
+		\item transmitted: $\hat{\mathbf{k}}_t$ still points downward, so $\mathbf{H}_v^t$ keeps the incident direction ($\otimes$).
+	\end{itemize}
+	\item The same thing happens for H polarization (Figure~\ref{f:pol}a), where $\mathbf{E}_h$ is $\otimes$ for all three waves and the in-plane $\mathbf{H}_h$ reverses instead: at normal incidence, $\mathbf{H}_h^i \parallel +\hat{\mathbf{x}}$ and $\mathbf{H}_h^r \parallel -\hat{\mathbf{x}}$. The flip is easier to see for V polarization because the field normal to the page is $\mathbf{H}$.
+	\item The arrows are reference directions, not the actual field directions: the actual reflected field is the reference direction times the (complex) amplitude, $E_v^r = \rho_vE_v^i$. For example, at normal incidence onto a denser medium ($\eta_2 < \eta_1$), $\rho_v < 0$, so the actual $\mathbf{E}_v^r$ points opposite its arrow and the actual $\mathbf{H}_v^r$ points into the page. With these reference directions, $\rho_v = \rho_h = \rho$ at normal incidence, as in Lecture 4.
+\end{itemize}
+
 \begin{itemize}
 	\item As we discussed in the lecture on polarization, any polarization can be decomposed into orthogonal linear polarizations.
 	\item[] $\Rightarrow$ Hereafter, we only need to consider horizontal (H) and vertical (V) polarizations (the same as perpendicular and parallel, respectively).
