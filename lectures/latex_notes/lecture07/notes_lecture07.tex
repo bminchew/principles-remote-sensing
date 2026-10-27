@@ -425,7 +425,9 @@ These components are sketched in Figure~\ref{f:radar}.
 \subsubsection{Roughness spectrum}
 
 \begin{itemize}
-	\item It is more common to represent the surface in terms of the roughness spectrum
+	% NOTE: added the Fourier-transform/Wiener--Khinchin remark and the definition of the lags u, v at the instructor's
+	% request (2026-10-27).
+	\item It is more common to represent the surface in terms of the roughness spectrum, the 2D Fourier transform of $\mathcal{C}$ (by the Wiener--Khinchin theorem, the power spectral density of $\xi$ normalized by $h^2$):
 	\begin{equation}
 		\label{e:W}
 		W(k_x,k_y) = \frac{1}{2\pi}\int_{-\infty}^{\infty}\!\!\int_{-\infty}^{\infty}\mathcal{C}(u,v)\exp\left\{-j\left(k_xu + k_yv\right)\right\}du\,dv,
@@ -440,7 +442,7 @@ These components are sketched in Figure~\ref{f:radar}.
 	% W^n(-2k sin theta, 0)). W is even in k_x and k_y for an isotropic surface, so the overall sign is immaterial.
 	% k is the wavenumber in the medium above the surface (k_0 for air). Added "with the incident wave in the x--z plane
 	% propagating toward +x" and "from the forward, +x, direction" to fix the sign conventions.
-	where
+	where $u = x - x'$ and $v = y - y'$ are the lags (separations) in $x$ and $y$, so that $r = \sqrt{u^2 + v^2}$ in Eq.~\eqref{e:acf}, and
 	\begin{equation}
 		\label{e:kxky}
 		k_x = k\left(\sin\theta_s\cos\phi_s - \sin\theta_i\right) \qquad \text{and} \qquad k_y = k\sin\theta_s\sin\phi_s,
@@ -716,7 +718,7 @@ r & horizontal separation between two surface points & m & -- \\
 \rho & Fresnel reflection coefficient of a planar interface (Lectures 4--5) & dimensionless & -- \\
 \Gamma & reflectivity of an infinite planar interface, $|\rho|^2$ & dimensionless & $0$--$1$ \\
 \ell & correlation length & m & -- \\
-W & roughness spectrum & m$^2$ & -- \\
+W & roughness spectrum: 2D Fourier transform of $\mathcal{C}$ (normalized height power spectrum) & m$^2$ & -- \\
 k_x,\ k_y & spectral wavenumbers of the surface roughness & rad/m & backscatter: $(-2k\sin\theta_i, 0)$ \\
 u,\ v & separations in $x$ and $y$ (lags) & m & -- \\
 \theta_s & scattering angle & rad & $\theta_i$ in backscatter \\
