@@ -80,7 +80,7 @@ q_v & volume charge density & C/m$^3$ & 0 in RS & 1, 2 & D31 \\
 \omega & angular frequency (L8: also of ocean-surface waves) & rad/s & -- & 1--2, 4--5, 8, 10--13 & D65, D96 \\
 f & frequency, $\omega/2\pi$ (L14: instantaneous frequency $f(t)$ of a chirp, $f(s)$ of the Doppler history) & Hz & -- & 1, 12--14 & D58, D92 \\
 \multicolumn{6}{l}{\emph{Electrostatics (parallel-plate capacitor)}} \\
-A & plate area (L1); area illuminated by a beam on an interface (L5); nominal area of illumination in $\sigma^0$ (L7) (L9: horizontal area illuminated at depth $z$ in a canopy) & m$^2$ & -- & 1, 5, 7, 9 & D5, D34, D70 \\
+A & plate area (L1); area illuminated by a beam on an interface (L5); nominal (horizontal, ground-projected) area of illumination in $\sigma^0$ (L7) (L9: horizontal area illuminated at depth $z$ in a canopy) & m$^2$ & -- & 1, 5, 7, 9 & D5, D34, D70 \\
 h & plate separation & m & -- & 1 & D97, D31 \\
 Q & plate charge & C & -- & 1 & \\
 E & electric field magnitude & V/m & -- & 1 & D2, D100 \\
@@ -225,7 +225,7 @@ G_{ts} & gain of the scatterer in the direction of the receiver & dimensionless 
 A_\mathrm{eff} & effective area of the receiving aperture (L13: of a radiometer antenna, handwritten $A_r$; $\Omega_\mathrm{p} = \lambda^2/A_\mathrm{eff}$) & m$^2$ & $\lambda^2G_r/4\pi$ (lossless antenna) & 7, 13 & D52, D141 \\
 P_r & power entering the receiver & W & -- & 7, 14 & D30, D52 \\
 \sigma & radar (scattering) cross section, $A_{\mathrm{eff},s}(1-f_a)G_{ts}$ & m$^2$ & -- & 7 & D45, D117 \\
-\sigma_{(n)}, A_{(n)} & radar cross section and area of individual scatterer $n$ & m$^2$ & -- & 7 & D45, D59 \\
+\sigma_{(n)}, A_{(n)} & radar cross section of individual scatterer $n$ and the horizontal (ground-projected) area illuminated around it & m$^2$ & -- & 7 & D45, D59 \\
 \sigma^0, \sigma^0_{pq} & normalized radar cross section (backscattering coefficient), $\langle\sigma_{(n)}/A_{(n)}\rangle_n$; for receive/transmit polarizations $p$, $q$ & dimensionless & -- & 7, 8, 9 & D45 \\
 p, q & receive and transmit polarizations ($h$ or $v$) (L12: $p$ only) & -- & -- & 7, 8, 9, 12 & D51 \\
 P_p^r, P_q^t & $p$-polarized received power; $q$-polarized transmit power (as in Ulaby \& Long) & W & -- & 7 & D30, D52 \\

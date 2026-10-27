@@ -224,7 +224,9 @@ These components are sketched in Figure~\ref{f:radar}.
 		\label{e:sigma0}
 		\sigma^0 = \left\langle\frac{\sigma_{(n)}}{A_{(n)}}\right\rangle_n,
 	\end{equation}
-	where $\sigma_{(n)} \equiv$ radar cross section for an individual scatterer and $\langle\cdot\rangle$ denotes the spatial average.
+	% NOTE: added the definition of A_(n) and the following two sentences at the instructor's request (2026-10-27);
+	% "horizontal area" follows U&L 2014, Eq. 5.33a (p. 171).
+	where $\sigma_{(n)} \equiv$ radar cross section for an individual scatterer, $A_{(n)} \equiv$ horizontal (ground-projected) area illuminated around scatterer $n$, and $\langle\cdot\rangle$ denotes the spatial average. The area is ``nominal'' because it is set by the radar geometry, not by the scatterer (cf.\ $A_{\mathrm{eff},s}$). For a uniform distributed target of horizontal area $A$, Eq.~\eqref{e:sigma0} reduces to $\sigma^0 = \sigma/A$.
 \end{itemize}
 
 \subsubsection{Accounting for polarization}
@@ -693,12 +695,12 @@ G_{ts} & gain of the scatterer in the direction of the receiver & dimensionless 
 A_\mathrm{eff} & effective area of the receiving aperture & m$^2$ & $\lambda^2G_r/(4\pi)$ (lossless antenna) \\
 P_r & power entering the receiver & W & -- \\
 \sigma & radar (scattering) cross section, $A_{\mathrm{eff},s}(1 - f_a)G_{ts}$ & m$^2$ & -- \\
-\sigma_{(n)},\ A_{(n)} & radar cross section of individual scatterer $n$ and its illuminated area & m$^2$ & -- \\
+\sigma_{(n)},\ A_{(n)} & radar cross section of individual scatterer $n$ and the horizontal (ground-projected) area illuminated around it & m$^2$ & -- \\
 \sigma^0 & normalized radar cross section (``sigma-naught''), $\langle\sigma_{(n)}/A_{(n)}\rangle_n$ & dimensionless (m$^2$/m$^2$) & -- \\
 p,\ q & polarization of the received and transmitted waves & -- & $h$ or $v$ \\
 P_p^r,\ P_q^t & $p$-polarized received power; $q$-polarized transmit power & W & -- \\
 \sigma_{pq}^0 & normalized radar cross section for receive/transmit polarizations $p$, $q$ & dimensionless & $\sigma_{hv}^0 = 0$ in Eq.~\eqref{e:go} \\
-A & area illuminated (nominal area of illumination) & m$^2$ & -- \\
+A & nominal area of illumination: horizontal (ground-projected) area illuminated, set by the radar geometry & m$^2$ & -- \\
 E_p^s,\ E_q^i & scattered ($p$-polarized) and incident ($q$-polarized) electric fields & V/m & -- \\
 \Gamma_{pq} & reflectance, $|E_p^s|^2/|E_q^i|^2$ (depends on range, $\propto 1/R^2$) & dimensionless & -- \\
 \multicolumn{4}{l}{\emph{Surface scattering}} \\
