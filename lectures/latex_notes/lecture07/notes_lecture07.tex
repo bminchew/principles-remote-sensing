@@ -422,6 +422,47 @@ These components are sketched in Figure~\ref{f:radar}.
 	\item[$\Rightarrow$] This makes clear that $\ell$ is the distance over which the correlation decreases to $1/e$.
 \end{itemize}
 
+% NOTE: added at the instructor's request (2026-11-03): examples of where the two correlation functions arise.
+% Sources: U&L 2014, p. 196 (random soil surfaces favor the exponential; Nashashibi and Ulaby 2007) and Sec. 10-3.1,
+% p. 429 (natural surfaces: exponential best fit, Gaussian a close second); van Zyl 2011, pp. 185--188 (Gaussian
+% surfaces have less high-frequency roughness, Figs. 5-2, 5-3; infinite rms slope of the exponential, Eq. 5.1-9;
+% Shi et al. 1997: 76% of 117 Washita field profiles fit exp[-(r/l)^n] with n <= 1.4; Farr 1992: Mojave lava-flow
+% spectra ~ k^m with m between -2 and -3, and the exponential spectrum goes as k^-3 for k l >> 1). Checked in
+% python3/SymPy: the small-r expansions; k^3 W -> 1/ell for Eq. (e:W_e); white noise smoothed by diffusion for a time
+% T with diffusivity D has a Gaussian ACF with ell = sqrt(8 D T); the 1D Fourier transform of e^{-nu|t|/2} is a
+% Lorentzian of half-width nu/2 (matching Lecture 11, Eq. e:lorentz) and averaging e^{j omega_0 v t/c} over a
+% Maxwellian velocity distribution gives a Gaussian in t (Doppler line, Lecture 11, Eq. e:doppler). The snow example
+% is not in U&L or van Zyl: Debye, Anderson, and Brumberger (1957, J. Appl. Phys., 28, 679) for the exponential
+% correlation of random two-phase media; Matzler (2002, J. Glaciol., 48, 461) for the exponential correlation length
+% of snow used in microwave snow models.
+\subsubsection{Where these correlation functions arise}
+
+\begin{itemize}
+	\item The key difference is the behavior near $r = 0$:
+	\begin{itemize}
+		\item Gaussian: $\mathcal{C}(r) \approx 1 - r^2/\ell^2$ (flat top) $\rightarrow$ surface is smooth at scales $\ll \ell$; finite rms slope ($\sqrt{2}\,h/\ell$ in each direction); a single dominant roughness scale, since its roughness spectrum $W$ (Eq.~\eqref{e:W_g}, below) falls off exponentially for $k\ell \gtrsim 2$.
+		\item Exponential: $\mathcal{C}(r) \approx 1 - r/\ell$ (cusp) $\rightarrow$ surface stays rough down to the smallest scales; rms slope is infinite; $W$ (Eq.~\eqref{e:W_e}, below) falls off only as $k^{-3}$ for $k\ell \gg 1$ (roughness at many scales).
+	\end{itemize}
+	\item Exponential --- natural surfaces:
+	\begin{itemize}
+		\item Bare soils and agricultural/pasture fields: measured height profiles usually fit an exponential better than a Gaussian (e.g., about three-quarters of 117 profiles from fields in Oklahoma were close to exponential).
+		\item Lava flows (Mojave Desert): power-law roughness spectra, $W \propto k^{-2}$ to $k^{-3}$, similar to the tail of the exponential's spectrum; rough at every scale, like topography in general.
+		\item Snow and other granular, two-phase media (ice grains and air, soil grains and pores): along any line through the medium, crossings between phases occur at random, which gives an exponential correlation; microwave snow models describe snow microstructure by an ``exponential correlation length'' (relevant for volume scattering).
+	\end{itemize}
+	\item Gaussian --- surfaces (or fields) smoothed by some process:
+	\begin{itemize}
+		\item An initially uncorrelated (white-noise) random field smoothed by diffusion has a Gaussian correlation function, with $\ell$ growing as the square root of time (e.g., a temperature or concentration field, or topography smoothed by soil creep); the smoothing removes the small scales.
+		\item Measured profiles smoothed by the instrument (finite laser spot or pin spacing) also lose their small scales and look more Gaussian near $r = 0$.
+		\item In practice, the Gaussian is mostly an analytical convenience; it is rarely the best fit to natural microtopography, but it is needed for models that require finite slopes (e.g., the geometric optics result, Eq.~\eqref{e:go}).
+	\end{itemize}
+	\item The same pair shows up in time, not space, in Lecture~11 (spectral line shapes):
+	\begin{itemize}
+		\item Pressure broadening: collisions damp the oscillator, so its correlation in time has an exponential envelope $\Rightarrow$ Lorentz line shape.
+		\item Doppler broadening: Maxwellian (Gaussian) distribution of molecular velocities $\Rightarrow$ Gaussian correlation in time $\Rightarrow$ Gaussian line shape.
+		\item In both cases the line shape is the Fourier transform of the correlation function (Wiener--Khinchin), just as $W$ is the transform of $\mathcal{C}$ below (in 1D, the exponential transforms to a Lorentzian; the 2D isotropic transform in Eq.~\eqref{e:W_e} has a different form).
+	\end{itemize}
+\end{itemize}
+
 \subsubsection{Roughness spectrum}
 
 \begin{itemize}
