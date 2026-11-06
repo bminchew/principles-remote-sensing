@@ -142,7 +142,14 @@
 		% NOTE: added "for capillary waves", parallel to the small-K line.
 		\item large $K$: $\omega \rightarrow \sqrt{\gamma_\mathrm{st}K^3/\rho_w}$ for capillary waves.
 	\end{itemize}
-	\item We can see from this expression how ``surfactants'' (substances that reduce surface tension) change the dispersion relation of ocean surface waves $\Rightarrow$ change the scattering properties of EM waves.
+	% NOTE: added (instructor request 2026-11-05, connecting the wave spectrum to the roughness spectrum). Checked
+	% (SymPy): for deep-water gravity waves, Psi(omega) d omega/dK with omega = sqrt(gK) turns Eq. (e:PM) into
+	% (alpha/(2K^3)) exp{-beta g^2/(K^2 U^4)}, alpha = 8.1e-3, beta = 0.74.
+	\item The dispersion relation is what links the ocean-wave spectrum, usually measured as a function of frequency (e.g., Eq.~\ref{e:PM} below), to the spatial roughness spectrum that EM scattering depends on (Lecture 7): wave energy in a band $d\omega$ belongs to the wavenumbers $dK$ given by Eq.~\ref{e:disp} (together with the spread of wave directions, this gives $W(k_x,k_y)$).
+	% NOTE: added "; they also damp the short waves ... (Section s:bragg)". The darkening of slicks in radar images
+	% comes mostly from enhanced damping of the short waves by the film's surface elasticity (Marangoni damping;
+	% Alpers and Huehnerfuss, 1989), not only from the change of gamma_st in Eq. (e:disp).
+	\item We can see from this expression how ``surfactants'' (substances that reduce surface tension) change the dispersion relation of ocean surface waves $\Rightarrow$ change the scattering properties of EM waves. Surface films also strongly damp the short waves, which reduces the roughness at the Bragg wavelength (Section~\ref{s:bragg}) and makes slicks dark in radar images (Alpers and H\"uhnerfuss, 1989).
 	\item Common examples of surfactants include mineral oil (as in the oil spill example that we have seen many times so far in this course) and biological films. Microplastics may also act as a surfactant, but I believe this remains an open question.
 \end{itemize}
 
@@ -155,13 +162,20 @@
 % u_p,min = (4 g gamma_st/rho_w)^(1/4) = 0.23 m/s.
 \begin{itemize}
 	% NOTE: handwritten v_p written u_p (master table D15); handwritten rho written rho_w.
-	\item Gravity--capillary waves are excited (grow) in a turbulent wind field and reach equilibrium when the wind speed matches the phase velocity of the surface waves. From the dispersion relation, we define the phase velocity
+	% NOTE: handwritten "Gravity-capillary waves are excited (grow) in a turbulent wind field and reach equilibrium when
+	% the wind speed matches the phase velocity of the surface waves" narrowed (instructor approval 2026-11-05) to the
+	% dominant waves, for which it holds (see the NOTE above); the next-but-one item covers the short waves.
+	\item Gravity--capillary waves are excited (grow) in a turbulent wind field; the dominant (most energetic) waves reach equilibrium when the wind speed matches their phase velocity. From the dispersion relation, we define the phase velocity
 	\begin{equation}
 		\label{e:up}
 		u_p = \frac{\omega}{K} = \sqrt{\frac{g}{K} + \frac{\gamma_\mathrm{st}}{\rho_w}K}.
 	\end{equation}
 	\item In general, surfactants will reduce the surface tension of clean water $\Rightarrow$ (all else being equal) will slow (gravity--)capillary waves (Figure~\ref{f:up}).
 	% NOTE: added "(Figure~\ref{f:up})".
+	% NOTE: added (instructor request 2026-11-05). Phase speeds from Eq. (e:up) at the Bragg wavelengths of
+	% Table t:bragg (python3). U&L 2014, p. 788: large waves "may not be related to the local wind conditions",
+	% while capillary waves "tend to be in equilibrium with the local wind".
+	\item The centimeter-scale waves that dominate radar backscatter travel at only 0.2--0.6~m/s (Table~\ref{t:bragg}), far slower than the wind. They grow and decay quickly, so they stay in equilibrium with the local wind, whereas long waves (swell) can arrive from distant storms. This is why radar backscatter measures the local wind.
 \end{itemize}
 
 \begin{figure}[!htbp]
@@ -235,6 +249,12 @@
 	$\Rightarrow$ strong correlation between wind speed and surface height, which, of course, we all know from experience.
 	% NOTE: added "(the Pierson--Moskowitz spectrum for a fully developed sea)".
 	(Eq.~\ref{e:PM} is the Pierson--Moskowitz spectrum for a fully developed sea.)
+	% NOTE: added (instructor request 2026-11-05). Checked (python3): Eq. (e:h2) gives h = 0.53 m and a peak
+	% wavelength 2 pi g/omega_peak^2 = 83 m at U = 10 m/s, with omega_peak = (4 beta/5)^(1/4) g/U. Converted to
+	% wavenumber (see the NOTE at Eq. e:disp), the tail of Eq. (e:PM) is alpha/(2K^3), independent of U, e.g., at
+	% Lambda = 5 cm for U = 5, 10, 15 m/s. U&L 2014, Fig. 16-6 (p. 788; Bjerkaas and Riedel, 1979): wavenumber
+	% spectra whose short-wave part increases with wind stress.
+	\item Eq.~\ref{e:PM} describes the energetic long waves: at $U = 10$~m/s, $h \approx 0.5$~m and the peak wavelength is $\approx 80$~m. Its short-wave tail, converted to wavenumber with the dispersion relation, falls as $K^{-3}$ (in the gravity range) and does not depend on $U$. The wind dependence that matters for radar is in the centimeter-scale waves, whose spectral level rises with wind stress (Ulaby and Long (2014), Fig.~16-6); this is the origin of the $AU^n$ term below.
 	\item For remote sensing, we are concerned with the direction of the winds relative to the look direction (or plane of incidence of the EM wave) of the sensor. This relation is usually given as an empirical relation between the normalized radar cross section $\sigma_{pp}^0$ and the angle $\phi_\mathrm{wind}$ between the plane of incidence and the wind direction:
 	% NOTE: handwritten wind angle alpha written phi_wind (D69); A, a, b, n kept (D70); handwritten u_w written U (D68). Same form as U&L 2014, Eq. 16.2 (p. 784) and
 	% Eq. 16.19 (p. 794), sigma^0(chi) = A + B cos chi + C cos 2 chi, with B = A a and C = A b; the SASS-2 model
@@ -265,7 +285,12 @@
 		kh < 0.3 \qquad \text{and} \qquad \frac{h}{\ell} < 0.3
 	\end{equation}
 	(Ulaby and Long (2014), p.~428, also require $k\ell < 3$).
-	\item In general, $h$ corresponds only to the component of the roughness spectrum responsible for the majority of scattering $\rightarrow$ called the Bragg wavelength.
+	% NOTE: expanded (instructor request 2026-11-05) from the handwritten "In general, h corresponds only to the
+	% component of the roughness spectrum responsible for the majority of scattering -> called the Bragg wavelength."
+	% In Eq. (e:spm), h and W appear only as the product h^2 W(K_Bragg, 0) (see the NOTE there). The two meanings of h
+	% (ocean rms height in Eq. e:h2, rms height of the small-scale roughness in Eq. e:spm) are master-table entry
+	% D165, approved 2026-11-05: h kept in both, with the explanatory sentence in this item.
+	\item For the ocean, $h$ here is not the rms height of Eq.~\ref{e:h2} (about 0.5~m at $U = 10$~m/s, so $kh \gg 0.3$ at any microwave wavelength). In the Bragg model, $h$ is the rms height of the small-scale roughness only, and $h$ and $W$ enter Eq.~\ref{e:spm} only through $h^2W(K_\mathrm{Bragg},0)$, the amount of roughness at the component of the roughness spectrum responsible for the majority of scattering $\rightarrow$ called the Bragg wavelength. The long waves that carry most of the rms height are handled separately, as tilts (Section~\ref{s:tilted}).
 	\item Basic idea of the model: any random surface can be decomposed into a series of sinusoids. The wavelength that contributes most to the backscatter power is the one that maximizes constructive interference (resonance) of scattered waves (Figure~\ref{f:bragg}).
 	% NOTE: added "(Figure~\ref{f:bragg})".
 \end{itemize}
@@ -354,7 +379,33 @@
 		\label{e:KB}
 		K_\mathrm{Bragg} = 2k\sin\theta_i = \frac{2\pi}{\Lambda_\mathrm{Bragg}} \equiv \text{Bragg wavenumber}.
 	\end{equation}
+	% NOTE: added (instructor request 2026-11-05). Table values (python3): Eq. (e:LB) at theta_i = 35 deg, then
+	% Eqs. (e:disp) and (e:up) at K = K_Bragg with g = 9.81 m/s^2, gamma_st = 0.0728 N/m, rho_w = 1000 kg/m^3.
+	% NOTE: naming follows the ratio column of Table t:bragg (the gravity and surface-tension terms are comparable at
+	% Ku- to C-band; gravity dominates at L-band). U&L 2014, p. 787, call all waves from 1 cm to ~1 m capillary-gravity
+	% waves; by the 2 cm boundary of Section s:ocean the Ku-band Bragg wave (1.9 cm) would be a capillary wave.
+	\item At moderate incidence angles, the Bragg waves of microwave radars are centimeter- to decimeter-scale waves (Table~\ref{t:bragg}): at Ku- to C-band they are gravity--capillary waves, in which both gravity and surface tension matter, and at L-band they are short gravity waves. This is why the dispersion relation, surface tension, and surfactants matter for radar.
+	% NOTE: added (instructor request 2026-11-05). Checked (SymPy): 2 u_p sin(theta_i)/lambda with u_p = omega/K at
+	% K = K_Bragg (Eq. e:KB) equals omega(K_Bragg)/2 pi. Bragg lines first observed by Crombie (1955) at HF (13.56 MHz,
+	% Lambda_Bragg = 11 m).
+	\item Because the Bragg waves move, the backscattered signal is Doppler shifted by $\pm2u_p\sin\theta_i/\lambda$ (waves approaching and receding from the radar, with $u_p$ from Eq.~\ref{e:up} at $K_\mathrm{Bragg}$). Using Eq.~\ref{e:KB}, this is $\pm\omega/2\pi$, the frequency of the Bragg ocean wave from Eq.~\ref{e:disp} (Table~\ref{t:bragg}). (This is the two-way Doppler shift, $2/\lambda$ times the speed along the line of sight, $u_p\sin\theta_i$; Lecture 14.) Doppler spectra of sea echo at HF show these two sharp ``Bragg lines'' (Crombie, 1955), direct evidence that the radar sees the Bragg waves; at microwave frequencies the lines are broadened by the orbital motion of the longer waves. The offset of the lines from $\pm\omega/2\pi$ is used to measure surface currents.
 \end{itemize}
+
+\begin{table}[!htbp]
+	\centering
+	\caption{Bragg waves at common radar bands for $\theta_i = 35^\circ$ (Eqs.~\ref{e:disp}, \ref{e:up}, and \ref{e:LB}; clean water). The ratio compares the gravity and surface-tension terms of Eq.~\ref{e:disp}; it is 1 at $\Lambda = 1.7$~cm.}
+	\label{t:bragg}
+	\begin{tabular}{lccccc}
+		\hline
+		Band & $\lambda$ [cm] & $\Lambda_\mathrm{Bragg}$ [cm] & $gK\big/\left(\gamma_\mathrm{st}K^3/\rho_w\right)$ & $u_p$ [m/s] & $\omega/2\pi$ [Hz] \\
+		\hline
+		Ku (13.6 GHz) & 2.2 & 1.9 & 1.3 & 0.23 & 12 \\
+		X (9.6 GHz) & 3.1 & 2.7 & 2.5 & 0.24 & 8.9 \\
+		C (5.3 GHz) & 5.7 & 4.9 & 8.3 & 0.29 & 6.0 \\
+		L (1.26 GHz) & 23.8 & 20.7 & 147 & 0.57 & 2.8 \\
+		\hline
+	\end{tabular}
+\end{table}
 
 \subsection{The first-order small-perturbation model}
 
@@ -434,6 +485,15 @@
 	\item $\sigma_{vv}^0 > \sigma_{hh}^0$ for $\theta_i > 0$ (at normal incidence $\alpha_{vv} = \alpha_{hh}$) due to the expression for reflectivity (thus, due to EM BCs).
 \end{enumerate}
 
+% NOTE: added (instructor request 2026-11-05), placed here so that W(K_Bragg, 0) has been defined. U&L 2014, p. 789:
+% "the correlation function for any surface must be centrosymmetric", so its Fourier transform W is even in
+% (k_x, k_y) (Lecture 7 states this only for isotropic surfaces). U&L p. 790: upwind and crosswind correlation
+% lengths of the short-scale roughness differ (Eq. 16.9), and the antisymmetric bicoherence (horizontal skewness)
+% makes upwind backscatter exceed downwind. Modulation of the short waves by the long waves also contributes.
+\begin{itemize}
+	\item Back to the wind model, Eq.~\ref{e:gmf}: the $\cos2\phi_\mathrm{wind}$ term arises because the short waves are anisotropic (they run mostly along the wind), so $W(K_\mathrm{Bragg},0)$ depends on the look direction relative to the wind. The $\cos\phi_\mathrm{wind}$ (upwind--downwind) term cannot come from first-order Bragg scattering, because $W(-k_x,-k_y) = W(k_x,k_y)$ for any real, stationary surface, whose correlation function is centrosymmetric (Ulaby and Long (2014), p.~789); it comes from effects beyond first-order Bragg scattering, such as the skewed shape of wind-driven waves (Ulaby and Long (2014), p.~790).
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tilted Bragg scatter model}
 \label{s:tilted}
@@ -443,6 +503,8 @@
 	\item We can combine the Bragg model with the Kirchhoff model for undulating surfaces (Lecture 7) by (again) treating the surface as a bunch of randomly rough surfaces (infinite extent) that are tilted due to longer-wavelength roughness features.
 	% NOTE: added "(Lecture 7)".
 	\item On the ocean, this simply means that we represent the wind-driven gravity--capillary waves with a Bragg scatter model and rotate our local coordinate system to account for the passage of gravity waves (swells).
+	% NOTE: added (instructor request 2026-11-05). U&L 2014, p. 790, call these two-scale scattering models.
+	\item This is a two-scale view of the wave spectrum of Section~\ref{s:ocean}: waves much longer than $\Lambda_\mathrm{Bragg}$ (swell and the peak of Eq.~\ref{e:PM}, which carry most of $h$ in Eq.~\ref{e:h2}) tilt the patches, while waves near $\Lambda_\mathrm{Bragg}$ set $W$. Wind speed enters through both.
 	% NOTE: kept as handwritten. U&L 2014, p. 793, give 20--60 deg as the range where Bragg scattering dominates
 	% ocean backscatter; van Zyl 2011, p. 198, says facet scattering dominates below 20--30 deg.
 	\item This is a very accurate, simple model of scattering from the ocean surface for incidence angles ranging from 30$^\circ$--65$^\circ$. (Lower incidence angles produce primarily specular scatter, while angles $>65^\circ$ involve different mechanisms that we won't discuss in this course because they are esoteric.)
@@ -530,14 +592,19 @@
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% NOTE: added at the instructor's request (2026-11-03); both entries checked against their DOI records (Crossref).
+% NOTE: Rice and Valenzuela added at the instructor's request (2026-11-03); all entries checked against their DOI records (Crossref).
 % Rice (1951) also appears in the U&L 2014 bibliography with the same details.
 \section*{References}
 
+{\raggedright
 \begin{list}{}{\leftmargin=1.5em \itemindent=-1.5em \itemsep=4pt}
+	% NOTE: Alpers and Huehnerfuss (1989) and Crombie (1955) added 2026-11-05; checked against their DOI records (Crossref).
+	\item Alpers, W., and H\"uhnerfuss, H. (1989). The damping of ocean waves by surface films: A new look at an old problem. \textit{Journal of Geophysical Research: Oceans}, 94(C5), 6251--6265. doi:10.1029/JC094iC05p06251.
+	\item Crombie, D.~D. (1955). Doppler spectrum of sea echo at 13.56 Mc./s. \textit{Nature}, 175(4459), 681--682. doi:10.1038/175681a0.
 	\item Rice, S.~O. (1951). Reflection of electromagnetic waves from slightly rough surfaces. \textit{Communications on Pure and Applied Mathematics}, 4(2--3), 351--378. doi:10.1002/cpa.3160040206.
 	\item Valenzuela, G.~R. (1978). Theories for the interaction of electromagnetic and oceanic waves---A review. \textit{Boundary-Layer Meteorology}, 13(1--4), 61--85. doi:10.1007/BF00913863.
 \end{list}
+\par}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Symbols follow the master table in ../variables_master.tex; see it for flagged dual usages.
@@ -568,7 +635,7 @@ g & gravitational acceleration & m/s$^2$ & $9.81$ \\
 K & wavenumber of an ocean-surface wave & rad/m & -- \\
 \Lambda & wavelength of an ocean-surface wave, $2\pi/K$ & m & gravity: $>2$~cm; capillary: $<2$~cm \\
 u_p & phase velocity, $\omega/K$ & m/s & minimum $0.23$ (clean water) \\
-h & RMS height of the ocean surface (Sec.~\ref{s:bragg}: of the Bragg-scale roughness) & m & -- \\
+h & RMS height of the ocean surface (Eq.~\ref{e:h2}; Sec.~\ref{s:bragg}: of the small-scale roughness only) & m & $\approx 0.5$~m at $U = 10$~m/s (Eq.~\ref{e:h2}) \\
 \Psi(\omega) & frequency spectrum of the surface height & m$^2$\,s & Eq.~\eqref{e:PM} \\
 U & wind speed (19.5~m above the surface in Eq.~\eqref{e:PM}) & m/s & -- \\
 \phi_\mathrm{wind} & angle between the plane of incidence and the wind direction & rad & -- \\
